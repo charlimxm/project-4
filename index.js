@@ -1,7 +1,7 @@
 require('dotenv').config({silent: true})
 
 const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://localhost/project-4'
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 
 // installing all modules
 const bodyParser = require('body-parser') // for accessing POST request
