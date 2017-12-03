@@ -10,12 +10,13 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override') // for accessing PUT / DELETE
 const mongoose = require('mongoose') // for DB
 const path = require('path') // for Public files
-const passport = require('./config/ppConfig') // to register passport strategies
+// const passport = require('./config/ppConfig') // to register passport strategies
 const session = require('express-session') // to create session and cookies
 const MongoStore = require('connect-mongo')(session) // to store session into db
 
 // require all model files
 const User = require('./models/user')
+const Booking = require('./models/booking')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')
