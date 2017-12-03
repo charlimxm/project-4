@@ -1,6 +1,6 @@
 require('dotenv').config({silent: true})
 
-const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://localhost/fatPocketLH'
+const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://localhost/PearProgramming'
 const port = process.env.PORT || 4000
 
 // installing all modules
@@ -10,11 +10,13 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override') // for accessing PUT / DELETE
 const mongoose = require('mongoose') // for DB
 const path = require('path') // for Public files
-const passport = require('./config/ppConfig') // to register passport strategies
+// const passport = require('./config/ppConfig') // to register passport strategies
 const session = require('express-session') // to create session and cookies
 const MongoStore = require('connect-mongo')(session) // to store session into db
 
 // require all model files
+const User = require('./models/user')
+const Booking = require('./models/booking')
 
 // require all my route files
 
