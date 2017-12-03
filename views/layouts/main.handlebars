@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pear Programming</title>
+
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+{{!-- ---------------------------------------------------------------- --}}
+
+    <nav>
+      <div class="navbar-wrapper container active">
+        <ul class="left hide-on-med-and-down">
+          <li><a class="nav-link" href="/">Pear</a></li>
+        </ul>
+
+        {{#if user}}
+
+
+        <ul class="right hide-on-med-and-down">
+          <li><a class="nav-link" href="/logout">Logout</a></li>
+        </ul>
+
+        <ul class="right hide-on-med-and-down">
+          <li><a class="nav-link" href="/profile">{{user.name}}</a></li>
+        </ul>
+
+        {{else}}
+
+        <ul class="left hide-on-med-and-down">
+          <li><a class="nav-link" href="/login">Login</a></li>
+        </ul>
+        <ul class="left hide-on-med-and-down">
+          <li><a class="nav-link" href="/register">Register</a></li>
+        </ul>
+
+        {{/if}}
+
+      </div>
+    </nav>
+
+{{!-- ---------------------------------------------------------------- --}}
+
+      {{{ body }}}
+
+{{!-- ---------------------------------------------------------------- --}}
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col xl7 l7 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div>
+          <div class="col xl3 l3 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          <ul class="left hide-on-med-and-down">
+            © 2017 Fat Cat Lady Pte Ltd. All rights reserved.
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            Use of this site constitutes acceptance of our Terms of Use and Privacy Policy.
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+{{!-- ---------------------------------------------------------------- --}}
+
+    <!--Import jQuery before materialize.js-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="/assets/js/frontend.js"></script>
+ </body>
+</html>

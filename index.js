@@ -1,6 +1,6 @@
 require('dotenv').config({silent: true})
 
-const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://localhost/PearProgramming'
+const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://localhost/project-4'
 const port = process.env.PORT || 4000
 
 // installing all modules
@@ -19,6 +19,9 @@ const User = require('./models/user')
 const Booking = require('./models/booking')
 
 // require all my route files
+const register_routes = require('./routes/register_routes')
+const login_routes = require('./routes/login_routes')
+const profile_routes = require('./routes/profile_routes')
 
 // initiating express
 const app = express()
@@ -52,12 +55,47 @@ mongoose.connect(url, {
   (err) => { console.log(err) }
 )
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new MongoStore({ mongooseConnection: mongoose.connection })
+// }))
+
+var sess = {
+  secret: 'keyboard cat',
+  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
-}))
+}
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
+app.use(session(sess))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use((req, res, next) => {
+  app.locals.user = req.user
+  next()
+})
+
+app.get('/', (req, res) => {
+  res.render('home')
+})
+app.use('/register', register_routes)
+app.use('/profile', profile_routes)
+app.use('/login', login_routes)
+app.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
+})
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`)
