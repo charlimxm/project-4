@@ -2,7 +2,7 @@
   "name": "project-4",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/wdi-sg/project-4.git",
+  "repository": "https://github.com/charlimxm/project-4.git",
   "license": "MIT",
   "scripts": {
     "start": "nodemon"
@@ -23,5 +23,6 @@
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
-  }
+  },
+  "author": "Charmaine <charlimxm@gmail.com>"
 }
