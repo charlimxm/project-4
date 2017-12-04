@@ -17,10 +17,10 @@ router.post('/', (req, res) => {
   request({
   "method":"GET",
   "uri": "https://www.codewars.com/api/v1/users/" + req.body.user.username,
-  "json": true,
-  "headers": {
-    "User-Agent": "My little demo app"
-  }
+  "json": true
+  // "headers": {
+  //   "User-Agent": "My little demo app"
+  // }
 }).then(console.log, console.log);
   // call api with the username(fetch or diff library)
     //then you will get the json
@@ -37,8 +37,6 @@ router.post('/', (req, res) => {
     gender: formData.gender,
     imageUrl: formData.imageUrl
   })
-
-  newUser.language = 'js'
 
   newUser.save()
   .then(
