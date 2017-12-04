@@ -10,7 +10,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override') // for accessing PUT / DELETE
 const mongoose = require('mongoose') // for DB
 const path = require('path') // for Public files
-// const passport = require('./config/ppConfig') // to register passport strategies
+const passport = require('./config/ppConfig') // to register passport strategies
 const session = require('express-session') // to create session and cookies
 const MongoStore = require('connect-mongo')(session) // to store session into db
 
@@ -55,29 +55,29 @@ mongoose.connect(url, {
   (err) => { console.log(err) }
 )
 
-// app.use(session({
-//   secret: process.env.SESSION_SECRET,
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new MongoStore({ mongooseConnection: mongoose.connection })
-// }))
-
-var sess = {
-  secret: 'keyboard cat',
+app.use(session({
+  secret: process.env.SESSION_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
-}
+}))
 
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy
-  sess.cookie.secure = true // serve secure cookies
-}
+// var sess = {
+//   secret: 'keyboard cat',
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new MongoStore({ mongooseConnection: mongoose.connection })
+// }
+//
+// if (app.get('env') === 'production') {
+//   app.set('trust proxy', 1) // trust first proxy
+//   sess.cookie.secure = true // serve secure cookies
+// }
 
-app.use(session(sess))
-
+// app.use(session(sess))
+//
 app.use(passport.initialize())
 app.use(passport.session())
 

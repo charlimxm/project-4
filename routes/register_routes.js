@@ -16,15 +16,15 @@ router.post('/', (req, res) => {
     email: formData.email,
     password: formData.password,
   })
-
   newUser.save()
   .then(
     user => {
       passport.authenticate('local', {
-        successRedirect: '/'
+        successRedirect: '/',
+        failureRedirect: '/register'
       })(req, res)
     },
-    err => res.send(err)
+    err => console.log(err)
   )
 })
 
