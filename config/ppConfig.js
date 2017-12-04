@@ -14,7 +14,7 @@ passport.deserializeUser((id, next) => {
 })
 
 passport.use(new LocalStrategy({
-  useremailField: 'user[email]',
+  usernameField: 'user[email]',
   passwordField: 'user[password]'
 }, (email, password, next) => {
   User.findOne({email: email})
