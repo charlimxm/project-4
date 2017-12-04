@@ -21,8 +21,8 @@ router.post('/', (req, res) => {
   // "headers": {
   //   "User-Agent": "My little demo app"
   // }
-  var languages;
-  var language;
+  var languages = {};
+  // var language;
   var options = {
       method: "GET",
       uri: "https://www.codewars.com/api/v1/users/" + req.body.user.username,
@@ -36,12 +36,26 @@ router.post('/', (req, res) => {
   };
 
   rp(options)
-      .then(function (req) {
-        var languages = req.ranks.languages
-        for (language in languages) {
-          console.log(language, languages[x].name)
+      .then(function (obj) {
+        obj = obj.ranks.languages
+        for (language in obj) {
+          languages[language] = obj[language].name
+          // console.log(language)
+          // console.log(obj[language].name)
         }
-        // console.log("languages", req.ranks.languages.javascript.rank)
+        console.log("LANGUAGE", languages)
+        var formData = req.body.user
+        var newUser = new User({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          gender: formData.gender,
+          imageUrl: formData.imageUrl,
+          languages: languages
+        })
+
+
+  newUser.save()
       })
 
 // }).then(console.log, console.log);
@@ -50,13 +64,13 @@ router.post('/', (req, res) => {
       //then make new user with the json info
         // then save
         var formData = req.body.user
-
         var newUser = new User({
           username: formData.username,
           email: formData.email,
           password: formData.password,
           gender: formData.gender,
-          imageUrl: formData.imageUrl
+          imageUrl: formData.imageUrl,
+          languages: languages
         })
 
 

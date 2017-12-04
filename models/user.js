@@ -11,8 +11,8 @@ const userSchema = new Schema({
   gender: String,
   email: String,
   password: String,
-  imageUrl: String
-
+  imageUrl: String,
+  languages: Object
 })
 
 userSchema.pre('save', function (next) {
