@@ -10,7 +10,8 @@ const userSchema = new Schema({
   },
   gender: String,
   email: String,
-  password: String
+  password: String,
+  
 })
 
 userSchema.pre('save', function (next) {
