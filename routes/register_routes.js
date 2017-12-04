@@ -10,11 +10,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   var formData = req.body.user
+
   var newUser = new User({
     username: formData.username,
-    gender: formData.gender,
     email: formData.email,
     password: formData.password,
+    gender: formData.gender,
+    imageUrl: formData.imageUrl
   })
   newUser.save()
   .then(
@@ -27,5 +29,6 @@ router.post('/', (req, res) => {
     err => console.log(err)
   )
 })
+
 
 module.exports = router

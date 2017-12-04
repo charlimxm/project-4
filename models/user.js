@@ -10,11 +10,13 @@ const userSchema = new Schema({
   },
   gender: String,
   email: String,
-  password: String
+  password: String,
+  imageUrl: String
 })
 
 userSchema.pre('save', function (next) {
-  var user = this;
+  var user = this
+
   bcrypt.hash(user.password, 10)
   .then(hash => {
     user.password = hash

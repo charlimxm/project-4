@@ -4,8 +4,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   var user = req.user
-  res.send(req.user)
-  // console.log(user)
+  res.render('profile')
 })
 
 
