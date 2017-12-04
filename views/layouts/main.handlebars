@@ -1,89 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Pear Programming</title>
 
-    <link href="/assets/css/style.css" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/>
-    <script>UPLOADCARE_PUBLIC_KEY = "f2d9934e84f8b4f58c92"</script>
-    <script src="https://ucarecdn.com/libs/widget/3.1.4/uploadcare.full.min.js" charset="utf-8"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Pear Programming</title>
 
-{{!-- ---------------------------------------------------------------- --}}
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <!-- import bootstrap and flatui -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link href="/assets/css/flat-ui.css" rel="stylesheet">
 
-    <nav>
-      <div class="navbar-wrapper container active">
-        <ul class="left hide-on-med-and-down">
-          <li><a class="nav-link" href="/">Pear</a></li>
-        </ul>
+  <!--Import materialize.css-->
+  {{!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/> --}}
+
+  <script>
+    UPLOADCARE_PUBLIC_KEY = "f2d9934e84f8b4f58c92"
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.1.4/uploadcare.full.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+  {{!-- ---------------------------------------------------------------- --}}
+
+  <!-- Just an image -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">PEAR</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
 
         {{#if user}}
-
-
-        <ul class="right hide-on-med-and-down">
-          <li><a class="nav-link" href="/logout">Logout</a></li>
-        </ul>
-
-        <ul class="right hide-on-med-and-down">
-          <li><a class="nav-link" href="/profile">{{user.name}}</a></li>
-        </ul>
+        <a class="nav-item nav-link" href="/logout">Logout</a>
+        <a class="nav-item nav-link" href="/profile">{{user.name}}</a>
 
         {{else}}
-
-        <ul class="left hide-on-med-and-down">
-          <li><a class="nav-link" href="/login">Login</a></li>
-        </ul>
-        <ul class="left hide-on-med-and-down">
-          <li><a class="nav-link" href="/register">Register</a></li>
-        </ul>
+        <a class="nav-item nav-link" href="/login">Login</a>
+        <a class="nav-item nav-link" href="/register">Register</a>
 
         {{/if}}
 
-      </div>
-    </nav>
 
-{{!-- ---------------------------------------------------------------- --}}
+    </div>
+</div>
+</nav>
 
-      {{{ body }}}
+  {{!-- ---------------------------------------------------------------- --}}
 
-{{!-- ---------------------------------------------------------------- --}}
+  {{{ body }}}
+  {{!-- ---------------------------------------------------------------- --}}
 
-    <footer class="page-footer">
+
+
+    <footer class="fixed-bottom">
       <div class="container">
         <div class="row">
           <div class="col xl7 l7 s12">
             <h5 class="white-text">Footer Content</h5>
             <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
           </div>
-          <div class="col xl3 l3 offset-l2 s12">
+          <div class="justify-content-end">
             <h5 class="white-text">Links</h5>
-            <ul>
+            <ul class="nav">
               <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
               <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-          <ul class="left hide-on-med-and-down">
-            © 2017 Fat Cat Lady Pte Ltd. All rights reserved.
-          </ul>
-          <ul class="right hide-on-med-and-down">
-            Use of this site constitutes acceptance of our Terms of Use and Privacy Policy.
-          </ul>
-        </div>
-      </div>
+
     </footer>
 
-{{!-- ---------------------------------------------------------------- --}}
+    {{!-- ---------------------------------------------------------------- --}}
 
     <!--Import jQuery before materialize.js-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> --}}
     <script src="/assets/js/frontend.js"></script>
- </body>
+    <script src="/assets/js/flat-ui.js"></script>
+    <script src="/assets/js/flat-ui.min.js"></script>
+
+    {{!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+
 </html>
