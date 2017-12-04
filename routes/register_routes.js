@@ -18,15 +18,15 @@ router.post('/', (req, res) => {
     gender: formData.gender,
     imageUrl: formData.imageUrl
   })
-
   newUser.save()
   .then(
     user => {
       passport.authenticate('local', {
-        successRedirect: '/'
+        successRedirect: '/',
+        failureRedirect: '/register'
       })(req, res)
     },
-    err => res.send(err)
+    err => console.log(err)
   )
 })
 

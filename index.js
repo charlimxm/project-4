@@ -5,7 +5,6 @@ const port = process.env.PORT || 4000
 
 // installing all modules
 const bodyParser = require('body-parser') // for accessing POST request
-// const cloudinary = require('cloudinary')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override') // for accessing PUT / DELETE
@@ -14,8 +13,6 @@ const path = require('path') // for Public files
 const passport = require('./config/ppConfig') // to register passport strategies
 const session = require('express-session') // to create session and cookies
 const MongoStore = require('connect-mongo')(session) // to store session into db
-// const multer = require('multer')
-// const upload = multer({ dest: './uploads/' })
 
 // require all model files
 const User = require('./models/user')
@@ -49,13 +46,6 @@ app.use(bodyParser.urlencoded({
 // setup methodOverride
 app.use(methodOverride('_method'))
 
-// setup cloudinary
-// cloudinary.config({
-//   cloud_name: process.env.cloud_name,
-//   api_key: process.env.api_key,
-//   api_secret: process.env.api_secret
-// });
-
 mongoose.Promise = global.Promise
 mongoose.connect(url, {
   useMongoClient: true
@@ -67,11 +57,11 @@ mongoose.connect(url, {
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
+  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
-  })
-)
+}))
 
 app.use(passport.initialize())
 app.use(passport.session())
