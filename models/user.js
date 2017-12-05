@@ -7,18 +7,17 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    set: toLower
+    unique: true
   },
   gender: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true
+  },
   password: String,
   imageUrl: String,
   languages: Object
 })
-
-function toLower (str) {
-    return str.toLowerCase();
-}
 
 userSchema.pre('save', function (next) {
   var user = this
