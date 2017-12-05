@@ -17,7 +17,7 @@ const userSchema = new Schema({
   password: String,
   imageUrl: String,
   languages: Object,
-  rejected: Object,  // will store ids here
+  rejectedPearing: Object,  // will store ids here
   /*
     {
       'dfskjhgskldfghlksd': true
@@ -38,10 +38,10 @@ const userSchema = new Schema({
     status: pending
   }]
   */
-  pendingPearings: Array,
-  confirmedPearing: Object,
-  location: String,
-
+  invitedPearing: Object,
+  pendingPearings: Object,
+  acceptedPearing: Array,
+  location: String
 })
 
 userSchema.pre('save', function (next) {
