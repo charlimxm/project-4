@@ -3,25 +3,24 @@
 
 <form class="col s12 m6" action="/register" method="post">
 
-  <label for="name">Codewars Username</label>
-  <input type="text" name="user[username]" placeholder="e.g. codewarrior579823" class="black-text">
+  <label for="name">Codewars Username</label><br>
+  <input type="text" name="user[username]" placeholder="e.g. codewarrior579823" class="black-text"><br>
 
-  <label for="email">Email</label>
-  <input type="email" name="user[email]" placeholder="e.g. domain@email.com" class="black-text">
+  <label for="email">Email</label><br>
+  <input type="email" name="user[email]" placeholder="e.g. domain@email.com" class="black-text"><br>
 
-  <label for="password">Password</label>
-  <input type="password" name="user[password]" placeholder="Password here" class="black-text">
+  <label for="password">Password</label><br>
+  <input type="password" name="user[password]" placeholder="Password here" class="black-text"><br>
   <label for="gender">Gender</label><br>
   <input class="with-gap" type="radio" name="user[gender]" value="male" id="chooseGender1" />
   <label for="chooseGender1">Male</label><br>
   <input class="with-gap" type="radio" name="user[gender]" value="female" id="chooseGender2" />
   <label for="chooseGender2">Female</label><br>
 
-  <br>
-
   <label for="image">Profile Photo:</label><br>
-  <input type="hidden" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" />
-  <br>
+  <input type="hidden" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" /><br>
+
+  <input type="hidden" name="user[about]" value="Add a short introduction of yourself here" class="black-text">
 
   <button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right"></i>

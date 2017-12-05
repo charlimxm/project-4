@@ -1,15 +1,10 @@
+<div class="container">
 
-    <div class="part">
-    <div class="hexa">
-      <div class="hex1">
-        <div class="hex2">
-          <img src="/assets/img/dayah.jpg" alt="" width="313" height="313" />
-        </div>
-      </div>
-    </div>
-</div>
+  <br>
 
+  <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
 
+<<<<<<< HEAD
 <div class ="icon-profile">
   <div class ="container">
     <div class="row">
@@ -49,70 +44,69 @@
     </div>
   </div>
 </div>
+=======
+  <h3>{{ user.username }}</h3>
+>>>>>>> 9fed376872d9c61f90e208b16322b6427219de4c
 
+  <h7>Email: {{ user.email }}</h7><br>
 
-<div class = "about-user">
-  <div class="container d-flex justify-content-center">
-    <div class ="card">
-      <div class="card-body">
-        <h4 class="card-title">About Me!</h4>
-    <p class="card-text">I love learning new things and meeting people!</p>
+    <br>
 
-    </div>
-  </div>
+  <h7>Honor: {{ user.honor }}</h7><br>
+  <h7>Leaderboard Position: {{ user.leaderboardPosition }}</h7><br>
+  <h7>Overall Kyu: {{ user.overallKyu }}</h7><br>
+
+  <br>
+
+  <h7>Languages</h7>
+  <ul>
+    {{#each user.languages}}
+    <li>{{@key}}: {{this}}</li>
+    {{/each}}
+  </ul>
+
+  <br>
+
+  <h7>About Me: {{ user.about }}</h7><br>
+
+  <br>
+
+  <h5>Update Profile</h5>
+
+  <form action="/profile/{{ user.id }}?_method=PUT" method="post">
+
+    <input type="hidden" name="slug" value="{{ user.username }}">
+
+    <label for="email">Email:</label><br>
+    <input type="text" name="email" value="{{ user.email }}"><br>
+
+    <br>
+
+    <label for="email">About Me:</label><br>
+    <input type="text" rows="3" cols="80" name="about" value="{{ user.about }}"><br>
+
+    <br>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right"></i>
+    </button>
+
+  </form>
+
+  <br>
+  <br>
+
+  <h5>Delete Profile</h5>
+
+  <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Delete
+      <i class="material-icons right"></i>
+    </button>
+
+  </form>
+
+  <br>
+  <br>
+
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-{{!-- <div class ="content-lg container">
-<div class="content">
-  <div class="row">
-    <div class="card">
-      <div class="firstinfo"><img src="{{ user.imageUrl }}"/>
-        <div class="profileinfo">
-          <h1>{{ user.username }}</h1>
-          <h3>Python Ninja</h3>
-          <p class="bio">Lived all my life on the top of mount Fuji, learning the way to be a Ninja Dev.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  </div> --}}
-
-  {{!-- <div class ="container">
-    <div class="row">
-      <div class="col-sm">
-        <div class="tile">
-        <h3 class="tile-title">
-          Languages
-        </h3>
-      </div>
-      </div>
-      <div class="col-sm">
-        <div class="tile">
-        <h3 class="tile-title">
-          profile
-        </h3>
-      </div>
-      </div>
-      <div class="col-sm">
-        <div class="tile">
-        <img src="/assets/img/Compas.png" width="80" height="80" class="tile-image big-illustration">
-        <h3 class="tile-title">
-          Set your preferred Locations
-        </h3>
-      </div>
-      </div>
-
-    </div>
-  </div> --}}

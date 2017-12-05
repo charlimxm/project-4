@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
 router.put('/:id', (req, res) => {
   var formData = req.body
   User.findByIdAndUpdate(req.params.id, {
-    email: formData.email
+    email: formData.email,
+    about: formData.about,
   })
   .then(() => res.redirect(`/profile`))
   .catch(err => console.log(err))
