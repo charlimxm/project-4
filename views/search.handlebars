@@ -1,0 +1,10 @@
+<div class="container">
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="selectLanguage">
+      {{#each user.languages}}
+      <option>{{@key}}</option>
+      {{/each}}
+    </select>
+  </div>
+</div>

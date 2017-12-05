@@ -21,9 +21,8 @@ router.post('/', (req, res) => {
   rp(options)
     .then(
       function (obj) {
-        obj = obj.ranks.languages
-        for (language in obj) {
-          languages[language] = obj[language].name
+        for (language in obj.ranks.languages) {
+          languages[language] = obj.ranks.languages[language].name
         }
         var formData = req.body.user
         var newUser = new User({
@@ -32,7 +31,11 @@ router.post('/', (req, res) => {
           password: formData.password,
           gender: formData.gender,
           imageUrl: formData.imageUrl,
-          languages: languages
+          honor: obj.honor,
+          leaderboardPosition: obj.leaderboardPosition,
+          languages: languages,
+          overallKyu: obj.ranks.overall.name,
+          about: formData.about
         })
         newUser.save()
           .then(user => {
@@ -43,10 +46,9 @@ router.post('/', (req, res) => {
           },
             err => console.log(err)
           )
-      }
-      , err =>
-            console.log('Username' + req.body.user.username + ' does not exist')
-          )
+      },
+        err => console.log('Username' + req.body.user.username + ' does not exist')
+      )
 })
 
 module.exports = router

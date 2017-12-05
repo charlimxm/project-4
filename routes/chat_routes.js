@@ -4,15 +4,13 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   var user = req.user
-  res.render('profile')
+  res.render('chat')
 })
-
 
 router.put('/:id', (req, res) => {
   var formData = req.body
   User.findByIdAndUpdate(req.params.id, {
-    email: formData.email,
-    about: formData.about,
+    email: formData.email
   })
   .then(() => res.redirect(`/profile`))
   .catch(err => console.log(err))

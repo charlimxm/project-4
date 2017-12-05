@@ -9,13 +9,18 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  gender: String,
   email: {
     type: String,
     unique: true
   },
   password: String,
+  gender: String,
   imageUrl: String,
+  honor: Number,
+  leaderboardPosition: Number,
+  languages: Object,
+  overallKyu: String,
+  about: String,
   languages: Object,
   rejectedPearing: Object,  // will store ids here
   /*
