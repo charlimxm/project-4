@@ -34,10 +34,12 @@
       </div>
       <div class="col-sm">
         <div class="tile">
+        <h5>{{user.location}} Area</h5>
+        </div>
+        <div class="tile">
           <h3 class="tile-title">
-            Code with me at:
+            Code with me
           </h3>
-          <p>Jurong Point Library</p>
           <p>{{ user.codewith }}</p>
         </div>
       </div>
@@ -63,19 +65,32 @@
 
     <input type="hidden" name="slug" value="{{ user.username }}">
 
-    <label for="email">Email:</label><br>
-    <input type="text" name="email" value="{{ user.email }}"><br>
+    <label for="aboutme">My Story:</label><br>
+    <input type="text" class="form-control" rows="3" cols="80" name="about" value="{{ user.about }}">
+    <small id="emailHelp" class="form-text text-muted">Write something about yourself, others will get to know you better.</small>
+    <br>
+    <br>
+    <label for="codewith">Let people know about your available time and days :</label><br>
+    <input type="text" class="form-control" rows="3" cols="80" name="codewith" value="{{ user.codewith }}">
+    <small id="emailHelp" class="form-text text-muted">Let people know more about your available time, days and exact location.</small>
+    <br>
+    <br>
+    <div class="form-group" >
+  <label for="exampleFormControlSelect1">Select Area</label>
+  <select class="form-control" type="text" name="location" value="{{ user.location }}" id="exampleFormControlSelect1">
+    <option>Central</option>
+    <option>North</option>
+    <option>South</option>
+    <option>East</option>
+    <option>West</option>
+  </select>
+</div>
 
     <br>
 
-    <label for="aboutme">About Me:</label><br>
-    <input type="text" rows="3" cols="80" name="about" value="{{ user.about }}"><br>
-
-    <br>
-
-    <label for="codewith">Let people know about your available time and days:</label><br>
-    <input type="text" rows="3" cols="80" name="codewith" value="{{ user.codewith }}"><br>
-
+    <label for="email">Update Email address</label><br>
+    <input type="text" class="form-control" name="email" value="{{ user.email }}">
+      <br>
     <br>
 
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
