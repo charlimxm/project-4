@@ -1,48 +1,122 @@
-<div class="container">
 
-  <br>
+    <div class="part">
+    <div class="hexa">
+      <div class="hex1">
+        <div class="hex2">
+          <img src="/assets/img/dayah.jpg" alt="" width="313" height="313" />
+        </div>
+      </div>
+    </div>
+</div>
 
-  <img src = "{{ user.imageUrl }}" class="img-thumbnail" height="300px">
 
-  <h3>{{ user.username }}</h3>
+<div class ="icon-profile">
+  <div class ="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            Languages
+          </h3>
+          <div class="container ">
+            <i class="icon-size devicon-javascript-plain colored"></i>
+            <i class="icon-size devicon-ruby-plain colored"></i>
+            <i class="icon-size devicon-rails-plain colored"></i>
+            <i class="icon-size devicon-html5-plain colored"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            Codewar Rank
+          </h3>
+          <p>{{ user.username }}</p>
+          <p>Honor: 72</p>
+          <p>Kyu: 7</p>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            Code with me at:
+          </h3>
+          <p>Jurong Point Library</p>
+          <p>Wednesdays and Sundays</p>
+          <p>Evenings</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <ul>
-    <li>Email: {{ user.email }}</li>
-  </ul>
 
-    <br>
-    <br>
+<div class = "about-user">
+  <div class="container d-flex justify-content-center">
+    <div class ="card">
+      <div class="card-body">
+        <h4 class="card-title">About Me!</h4>
+    <p class="card-text">I love learning new things and meeting people!</p>
 
-  <h5>Update Email</h5>
+    </div>
+  </div>
+</div>
+</div>
 
-  <form action="/profile/{{ user.id }}?_method=PUT" method="post">
 
-    <input type="hidden" name="slug" value="{{ user.username }}">
 
-    <label for="email">Email</label>
-    <input type="text" name="email" value="{{ user.email }}">
 
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-      <i class="material-icons right"></i>
-    </button>
 
-  </form>
-
-  <br>
-  <br>
-
+<<<<<<< HEAD
 
   <h5>Delete Profile</h5>
+=======
+>>>>>>> a0f35a0d875a9f1712d76792cb8f9536b7d2fc93
 
-  <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
 
-    <button class="btn waves-effect waves-light" type="submit" name="action">Delete
-      <i class="material-icons right"></i>
-    </button>
 
-  </form>
 
-<br>
-<br>
 
+{{!-- <div class ="content-lg container">
+<div class="content">
+  <div class="row">
+    <div class="card">
+      <div class="firstinfo"><img src="{{ user.imageUrl }}"/>
+        <div class="profileinfo">
+          <h1>{{ user.username }}</h1>
+          <h3>Python Ninja</h3>
+          <p class="bio">Lived all my life on the top of mount Fuji, learning the way to be a Ninja Dev.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+  </div> --}}
+
+  {{!-- <div class ="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="tile">
+        <h3 class="tile-title">
+          Languages
+        </h3>
+      </div>
+      </div>
+      <div class="col-sm">
+        <div class="tile">
+        <h3 class="tile-title">
+          profile
+        </h3>
+      </div>
+      </div>
+      <div class="col-sm">
+        <div class="tile">
+        <img src="/assets/img/Compas.png" width="80" height="80" class="tile-image big-illustration">
+        <h3 class="tile-title">
+          Set your preferred Locations
+        </h3>
+      </div>
+      </div>
+
+    </div>
+  </div> --}}
