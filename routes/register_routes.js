@@ -21,31 +21,32 @@ router.post('/', (req, res) => {
   rp(options)
     .then(
       function (obj) {
-      obj = obj.ranks.languages
-      for (language in obj) {
-        languages[language] = obj[language].name
+        obj = obj.ranks.languages
+        for (language in obj) {
+          languages[language] = obj[language].name
+        }
+        var formData = req.body.user
+        var newUser = new User({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          gender: formData.gender,
+          imageUrl: formData.imageUrl,
+          languages: languages
+        })
+        newUser.save()
+          .then(user => {
+            passport.authenticate('local', {
+              successRedirect: '/',
+              failureRedirect: '/register'
+            })(req, res)
+          },
+            err => console.log(err)
+          )
       }
-      var formData = req.body.user
-      var newUser = new User({
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-        gender: formData.gender,
-        imageUrl: formData.imageUrl,
-        languages: languages
-      })
-      newUser.save()
-    }).then(user => {
-      passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/register'
-      })(req, res)
-    },
-    err => console.log(err)
-  )
-  .catch(function (err) {
-    console.log('Username' + username + 'does not exist')
-  })
+      , err =>
+            console.log('Username' + req.body.user.username + ' does not exist')
+          )
 })
 
 module.exports = router
