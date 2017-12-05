@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   var user = req.user
-  res.render('profile')
+  res.render('chat')
 })
 
 router.put('/:id', (req, res) => {
