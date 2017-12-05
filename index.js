@@ -22,7 +22,8 @@ const Booking = require('./models/booking')
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-
+const search_routes = require('./routes/search_routes');
+const pending_routes = require('./routes/pending_routes');
 // initiating express
 const app = express()
 
@@ -91,11 +92,14 @@ app.get('/', (req, res) => {
 })
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
+app.use('/search', search_routes)
 app.use('/login', login_routes)
+app.use('/pending', pending_routes)
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
+
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`)

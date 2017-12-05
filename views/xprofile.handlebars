@@ -1,0 +1,27 @@
+<div class="container">
+  <br>
+  <img src="{{ user.imageUrl }}" class="img-thumbnail" height="300px">
+  <h3>{{ user.username }}</h3>
+  <ul>
+    <li>Email: {{ user.email }}</li>
+  </ul>
+  <br>
+  <br>
+  <h5>Update Profile</h5>
+  <form action="/profile/{{ user.id }}?_method=PUT" method="post">
+    <input type="hidden" name="slug" value="{{ user.username }}">
+    <label for="email">Email</label>
+    <input type="text" name="email" value="{{ user.email }}">
+    <button  type="submit" name="action">Submit
+    </button>
+  </form>
+  <br>
+  <br>
+  <h5>Delete Profile</h5>
+  <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
+    <button type="submit" name="action">Delete
+    </button>
+  </form>
+  <br>
+  <br>
+</div>
