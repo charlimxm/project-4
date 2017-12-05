@@ -2,6 +2,38 @@ $(function () {
 
   $('select').material_select()
 
+  const $userSearch = $('#userSearch')
+  const $userResult = $(".userResult")
+
+  $userSearch.on('submit', e => {
+    fetch('/search', {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'},
+      body: json
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(userResult)
+    .catch(err=> console.log(err))
+  })
+
+  function showResults(data){
+    let allResults = data.map(user => {
+
+      const $newUsername = $("<li>").text(user.username)
+      const $newHonor = $("<li>").text(user.honor)
+      const $newLeaderboardPosition = $("<li>").text(user.leaderboardPosition)
+      $newHonor.append($newLeaderboardPosition)
+      $newUsername.append($newHonor)
+      return $newList
+
+    })
+    $userResult.html('')
+    $userResult.append(allResults)
+  }
+
   const $deleteForm = $('.deleteForm')
 
   $deleteForm.on('submit', function (e) {

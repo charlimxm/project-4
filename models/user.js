@@ -22,6 +22,10 @@ const userSchema = new Schema({
   overallKyu: String,
   about: String,
   languages: Object,
+  // languages: [
+  //   { lang: String,
+  //     kyu: String }
+  // ],
   rejectedPearing: Object,  // will store ids here
   /*
     {
