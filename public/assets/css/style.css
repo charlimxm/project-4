@@ -8,6 +8,11 @@ main {
   flex: 1 0 auto;
 }
 
+.navbar {
+  background-color: #2C3E50;
+  margin: 0px;
+}
+
 nav ul a, nav .brand-logo {
   color: #444;
 }
@@ -51,6 +56,15 @@ p {
   text-shadow: 2px 3px black;
 }
 
+.footer-color {
+  background-color: #7F8C8D;
+}
+
 footer.page-footer {
   margin: 0;
+}
+
+.hero-div {
+  background-color: #1ABC9C;
+  text-align: center;
 }
