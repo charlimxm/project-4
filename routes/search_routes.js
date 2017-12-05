@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   res.render('search') //
 })
 
-router.put('/:id', (req, res) => {
+router.post('/', (req, res) => {
   var formData = req.body
   console.log(formData)
 })
@@ -15,7 +15,7 @@ router.put('/:id', (req, res) => {
 
 
 
- 
+
 
 
 

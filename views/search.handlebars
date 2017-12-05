@@ -1,10 +1,15 @@
 <div class="container">
-<div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
+  <form class="col s12 m6" action="/search" method="post">
+    <label for="language">Language</label>
     <select class="form-control" id="selectLanguage">
       {{#each user.languages}}
       <option>{{@key}}</option>
       {{/each}}
     </select>
-  </div>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right"></i>
+    </button>
+
+  </form>
 </div>
