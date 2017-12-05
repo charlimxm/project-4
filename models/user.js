@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt') // for login and register
 const userSchema = new Schema({
   username: {
     type: String,
-    required: true
+    required: true,
+    set: toLower
   },
   gender: String,
   email: String,
@@ -14,6 +15,10 @@ const userSchema = new Schema({
   imageUrl: String,
   languages: Object
 })
+
+function toLower (str) {
+    return str.toLowerCase();
+}
 
 userSchema.pre('save', function (next) {
   var user = this
