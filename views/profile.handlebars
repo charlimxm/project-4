@@ -2,16 +2,32 @@
 
   <br>
 
-  <img src = "{{ user.imageUrl }}" class="img-thumbnail" height="300px">
+  <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
 
   <h3>{{ user.username }}</h3>
 
-  <ul>
-    <li>Email: {{ user.email }}</li>
-  </ul>
+  <h7>Email: {{ user.email }}</h7><br>
 
     <br>
-    <br>
+
+  <h7>Honor: {{ user.honor }}</h7><br>
+  <h7>Leaderboard Position: {{ user.leaderboardPosition }}</h7><br>
+  <h7>Overall Kyu: {{ user.overallKyu }}</h7><br>
+
+  <br>
+
+  <h7>Languages</h7>
+  <ul>
+    {{#each user.languages}}
+    <li>{{@key}}: {{this}}</li>
+    {{/each}}
+  </ul>
+
+  <br>
+
+  <h7>About Me: {{ user.about }}</h7><br>
+
+  <br>
 
   <h5>Update Profile</h5>
 
@@ -19,8 +35,15 @@
 
     <input type="hidden" name="slug" value="{{ user.username }}">
 
-    <label for="email">Email</label>
-    <input type="text" name="email" value="{{ user.email }}">
+    <label for="email">Email:</label><br>
+    <input type="text" name="email" value="{{ user.email }}"><br>
+
+    <br>
+
+    <label for="email">About Me:</label><br>
+    <input type="text" rows="3" cols="80" name="about" value="{{ user.about }}"><br>
+
+    <br>
 
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right"></i>
@@ -41,7 +64,7 @@
 
   </form>
 
-<br>
-<br>
+  <br>
+  <br>
 
 </div>
