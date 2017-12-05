@@ -21,6 +21,7 @@ const userSchema = new Schema({
   languages: Object,
   overallKyu: String,
   about: String,
+  codewith: String,
   languages: Object,
   rejectedPearing: Object,  // will store ids here
   /*
