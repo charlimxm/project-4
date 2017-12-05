@@ -34,26 +34,28 @@
       <div class="navbar-nav">
 
         {{#if user}}
+        <a class="nav-item nav-link" href="/search">Search</a>
+        <a class="nav-item nav-link" href="/pending">Pending</a>
+        <a class="nav-item nav-link" href="/chat">Chat</a>
         <a class="nav-item nav-link" href="/profile">{{user.username}}</a>
         <a class="nav-item nav-link" href="/logout">Logout</a>
 
         {{else}}
+
         <a class="nav-item nav-link" href="/login">Login</a>
         <a class="nav-item nav-link" href="/register">Register</a>
 
         {{/if}}
 
-
+      </div>
     </div>
-</div>
-</nav>
+  </nav>
 
   {{!-- ---------------------------------------------------------------- --}}
 
   {{{ body }}}
+
   {{!-- ---------------------------------------------------------------- --}}
-
-
 
     <footer class="footer-color navbar-dark">
       <div class="container">

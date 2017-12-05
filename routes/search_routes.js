@@ -3,9 +3,10 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.send("We are the Champions") //
+  res.render('search') //
 })
 
+<<<<<<< HEAD
 // search function
 router.put('/:id', (req, res) => {
   var formData = req.body
@@ -23,6 +24,10 @@ router.put('/:id', (req, res) => {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 54dccca10d339fdf8777d3b0543bc3f525837d56
 
 
 

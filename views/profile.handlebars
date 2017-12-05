@@ -4,7 +4,45 @@
 
   <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
 
-  <h3>{{ user.username }}</h3>
+<div class ="icon-profile">
+  <div class ="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            Languages
+          </h3>
+          <div class="container ">
+            <i class="icon-size devicon-javascript-plain colored"></i>
+            <i class="icon-size devicon-ruby-plain colored"></i>
+            <i class="icon-size devicon-rails-plain colored"></i>
+            <i class="icon-size devicon-html5-plain colored"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            Codewar Rank
+          </h3>
+          <p>{{ user.username }}</p>
+          <p>{{ user.honor }}</p>
+          <p>Overall Kyu: {{ user.overallKyu }}</p>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            Code with me at:
+          </h3>
+          <p>Jurong Point Library</p>
+          <p>Wednesdays and Sundays</p>
+          <p>Evenings</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <h7>Email: {{ user.email }}</h7><br>
 

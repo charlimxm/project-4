@@ -22,8 +22,9 @@ const Booking = require('./models/booking')
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-const search_routes = require('./routes/search_routes');
-const pending_routes = require('./routes/pending_routes');
+const search_routes = require('./routes/search_routes')
+const pending_routes = require('./routes/pending_routes')
+const chat_routes = require('./routes/chat_routes')
 // initiating express
 const app = express()
 
@@ -64,21 +65,6 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
-// var sess = {
-//   secret: 'keyboard cat',
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new MongoStore({ mongooseConnection: mongoose.connection })
-// }
-//
-// if (app.get('env') === 'production') {
-//   app.set('trust proxy', 1) // trust first proxy
-//   sess.cookie.secure = true // serve secure cookies
-// }
-
-// app.use(session(sess))
-//
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -92,14 +78,14 @@ app.get('/', (req, res) => {
 })
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
-app.use('/search', search_routes)
 app.use('/login', login_routes)
+app.use('/search', search_routes)
 app.use('/pending', pending_routes)
+app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
-
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`)
