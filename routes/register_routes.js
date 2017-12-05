@@ -44,18 +44,14 @@ router.post('/', (req, res) => {
           // console.log(obj[language].name)
         }
         console.log("LANGUAGE", languages)
-        var formData = req.body.user
-        var newUser = new User({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-          gender: formData.gender,
-          imageUrl: formData.imageUrl,
-          languages: languages
+        newUser.findOne({username: req.body.user.username}, function(err, newUser) {
+          newUser.update({languages: languages})
         })
-
-
-  newUser.save()
+        // console.log(formData)
+  //       var newUser = new User({
+  //         languages: languages
+  //       })
+  // User.save()
       })
 
 // }).then(console.log, console.log);
@@ -69,8 +65,7 @@ router.post('/', (req, res) => {
           email: formData.email,
           password: formData.password,
           gender: formData.gender,
-          imageUrl: formData.imageUrl,
-          languages: languages
+          imageUrl: formData.imageUrl
         })
 
 
