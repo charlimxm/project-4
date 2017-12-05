@@ -1,6 +1,6 @@
 body {
   display: flex;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   flex-direction: column;
 }
 
@@ -67,4 +67,8 @@ footer.page-footer {
 .hero-div {
   background-color: #1ABC9C;
   text-align: center;
+}
+
+.how-to-use {
+  background-color: #ECF0F1;
 }
