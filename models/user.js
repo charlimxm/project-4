@@ -20,12 +20,10 @@ const userSchema = new Schema({
   leaderboardPosition: Number,
   languages: Object,
   overallKyu: String,
+  location: String,
   about: String,
+  codewith: String,
   languages: Object,
-  // languages: [
-  //   { lang: String,
-  //     kyu: String }
-  // ],
   rejectedPearing: Object,  // will store ids here
   /*
     {

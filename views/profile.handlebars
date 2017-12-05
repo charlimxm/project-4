@@ -2,10 +2,12 @@
 
   <br>
 
-  <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
-
 <div class ="icon-profile">
   <div class ="container">
+    <div class="row">
+      <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
+    </div>
+    <br>
     <div class="row">
       <div class="col-sm">
         <div class="tile">
@@ -13,74 +15,82 @@
             Languages
           </h3>
           <div class="container ">
-            <i class="icon-size devicon-javascript-plain colored"></i>
-            <i class="icon-size devicon-ruby-plain colored"></i>
-            <i class="icon-size devicon-rails-plain colored"></i>
-            <i class="icon-size devicon-html5-plain colored"></i>
+            {{#each user.languages}}
+            <p><i class="icon-size devicon-{{lang}}-plain colored"> {{kyu}} kyu</i></p>
+            {{/each}}
           </div>
         </div>
       </div>
       <div class="col-sm">
         <div class="tile">
           <h3 class="tile-title">
-            Codewar Rank
+            {{ user.username }}
           </h3>
-          <p>{{ user.username }}</p>
-          <p>{{ user.honor }}</p>
-          <p>Overall Kyu: {{ user.overallKyu }}</p>
+          <p>Codewars Rank</p>
+          <p>Honor : {{ user.honor }}</p>
+          <p>Overall Kyu : {{ user.overallKyu }}</p>
+          <p>Leaderboard Position : {{ user.leaderboardPosition }}</p>
         </div>
       </div>
       <div class="col-sm">
         <div class="tile">
+        <h5>{{user.location}} Area</h5>
+        </div>
+        <div class="tile">
           <h3 class="tile-title">
-            Code with me at:
+            Code with me
           </h3>
-          <p>Jurong Point Library</p>
-          <p>Wednesdays and Sundays</p>
-          <p>Evenings</p>
+          <p>{{ user.codewith }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">
+            My Story :
+          </h3>
+          <div class="container ">
+            <p>{{ user.about }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  <h7>Email: {{ user.email }}</h7><br>
-
-    <br>
-
-  <h7>Honor: {{ user.honor }}</h7><br>
-  <h7>Leaderboard Position: {{ user.leaderboardPosition }}</h7><br>
-  <h7>Overall Kyu: {{ user.overallKyu }}</h7><br>
-
-  <br>
-
-  <h7>Languages</h7>
-  <ul>
-    {{#each user.languages}}
-    <li>{{lang}}: {{kyu}} kyu</li>
-    {{/each}}
-  </ul>
-
-  <br>
-
-  <h7>About Me: {{ user.about }}</h7><br>
-
-  <br>
-
-  <h5>Update Profile</h5>
+<div class ="container icon-profile">
 
   <form action="/profile/{{ user.id }}?_method=PUT" method="post">
 
     <input type="hidden" name="slug" value="{{ user.username }}">
 
-    <label for="email">Email:</label><br>
-    <input type="text" name="email" value="{{ user.email }}"><br>
+    <label for="aboutme">My Story:</label><br>
+    <input type="text" class="form-control" rows="3" cols="80" name="about" value="{{ user.about }}">
+    <small id="emailHelp" class="form-text text-muted">Write something about yourself, others will get to know you better.</small>
+    <br>
+    <br>
+    <label for="codewith">Let people know about your available time and days :</label><br>
+    <input type="text" class="form-control" rows="3" cols="80" name="codewith" value="{{ user.codewith }}">
+    <small id="emailHelp" class="form-text text-muted">Let people know more about your available time, days and exact location.</small>
+    <br>
+    <br>
+    <div class="form-group" >
+  <label for="exampleFormControlSelect1">Select Area</label>
+  <select class="form-control" type="text" name="location" value="{{ user.location }}" id="exampleFormControlSelect1">
+    <option>Central</option>
+    <option>North</option>
+    <option>South</option>
+    <option>East</option>
+    <option>West</option>
+  </select>
+</div>
 
     <br>
 
-    <label for="email">About Me:</label><br>
-    <input type="text" rows="3" cols="80" name="about" value="{{ user.about }}"><br>
-
+    <label for="email">Update Email address</label><br>
+    <input type="text" class="form-control" name="email" value="{{ user.email }}">
+      <br>
     <br>
 
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -89,9 +99,9 @@
 
   </form>
 
-  <br>
-  <br>
+</div>
 
+  <div class ="container icon-profile">
   <h5>Delete Profile</h5>
 
   <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
@@ -104,5 +114,5 @@
 
   <br>
   <br>
-
+</div>
 </div>

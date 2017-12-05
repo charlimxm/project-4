@@ -41,12 +41,13 @@ router.post('/', (req, res) => {
           leaderboardPosition: obj.leaderboardPosition,
           languages: arr,
           overallKyu: obj.ranks.overall.name,
-          about: formData.about
+          about: formData.about,
+          codewith: formData.codewith
         })
         newUser.save()
           .then(user => {
             passport.authenticate('local', {
-              successRedirect: '/',
+              successRedirect: '/profile',
               failureRedirect: '/register'
             })(req, res)
           },
