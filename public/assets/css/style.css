@@ -17,9 +17,9 @@ nav ul a, nav .brand-logo {
   color: #444;
 }
 
-p {
+/*p {
   line-height: 2rem;
-}
+}*/
 
 .button-collapse {
   color: #26a69a;
@@ -69,11 +69,55 @@ footer.page-footer {
   text-align: center;
 }
 
+.hexa, .hexa div {
+  margin: 0 auto;
+  transform-origin: 50% 50%;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+}
+.hexa {
+  width: 325px;
+  height: 230px;
+}
+.hexa div {
+  width: 100%;
+  height: 100%;
+}
+.hexa {
+  transform: rotate(120deg);
+}
+.hex1 {
+  transform: rotate(-60deg);
+}
+.hex2 {
+  transform: rotate(-60deg);
+}
+.part {
+  padding: 30px 20px 30px;
+  background: #205B73;
+  color: #AFE4FC;
+}
+
 .how-to-use {
   /*background-color: #ECF0F1;*/
 }
 
-.content {
+.icon-size {
+  font-size: 2rem;
+}
+
+.icon-profile {
+  background: #F2E6A7;
+  padding: 20px;
+}
+
+.about-user {
+  background: #E74C3C;
+  padding: 20px;
+}
+
+/*.content {
   position: relative;
   animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards;
 }
@@ -174,4 +218,4 @@ footer.page-footer {
     top: -24px;
     left: -78px;
   }
-}
+}*/
