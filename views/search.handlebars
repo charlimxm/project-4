@@ -1,19 +1,11 @@
 <div class="container">
-  <form class="col s12 m6" action="/search" method="post">
-    <label for="searchLanguage">Search Language: </label>
-    <select name="searchLanguage">
-      <option value="" disabled selected>Please select</option>
-      {{#each user.languages}}
-        <option value="{{lang}}">{{lang}}</option>
-      {{/each}}
-     </select>
+  <h3>Search Pear</h3>
+  <input id="searchInput" type="text">
 
-    <button class="btn waves-effect waves-light" id="userSearch" type="submit" name="action">Submit
-      <i class="material-icons right"></i>
-    </button>
-  </form>
-
+  <h3>Search Results</h3>
   <div class="userResult">
 
   </div>
+
+
 </div>

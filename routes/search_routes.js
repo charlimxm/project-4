@@ -3,20 +3,23 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.render('search') //
-})
-
-router.post('/', (req, res) => {
-  var selectedLanguage = req.body.searchLanguage
-
-  User.find({
-    "languages.lang": selectedLanguage
-  }).sort({ "languages.kyu": 1 })
+  User.find({ })
   .then(data => {
     console.log(data)
-    res.send(data)
+    res.render('search', data)
   })
-  .catch((err) => console.log(err))
 })
+
+// router.post('/', (req, res) => {
+//   const selectedLanguage = req.body.searchLanguage
+//
+//   User.find({
+//     "languages.lang": selectedLanguage
+//   }).sort({ "languages.kyu": 1 })
+//   .then(data => {
+//     console.log(data)
+//     res.render(data)
+//   })
+// })
 
 module.exports = router
