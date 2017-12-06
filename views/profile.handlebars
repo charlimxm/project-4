@@ -2,11 +2,7 @@
 <div class ="icon-profile">
   <div class ="container">
     <div class="row">
-<<<<<<< HEAD
-      <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
-=======
       <img src = "{{ person.imageUrl }}" class="img-thumbnail" max-height="200px">
->>>>>>> 88df7b5a5eab5bffcdcf91d38b525fa6fa6ad2b0
     </div>
     <br>
     <div class="row">
@@ -65,13 +61,9 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-<div id="profile">
-=======
 {{#equal user.username person.username}}
 
->>>>>>> 88df7b5a5eab5bffcdcf91d38b525fa6fa6ad2b0
-  <form action="/profile/{{ user.id }}?_method=PUT" method="post">
+  <form action="/profile/{{ user.id }}?_method=PUT" method="post" id="profile">
     <div class="form-group" >
       <label for="exampleFormControlSelect1">Select Area</label>
       <select class="form-control" type="text" name="preferredLanguage" value="{{ user.preferredLanguage }}" id="exampleFormControlSelect1">
