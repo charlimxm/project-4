@@ -6,6 +6,9 @@
 
 <br>
 <br>
+<div>
+  {{data}}
+</div>
 
     {{!-- <div class="card-deck"> --}}
       {{!-- <div class="card">
@@ -14,11 +17,13 @@
           <img src="/assets/img/dayah.jpg" alt="" />
         </div>
         <div class="card-body">
-          <h4 class="card-title">{{user.username}}</h4>
-          {{#each user.languages}}
-          <p class="card-text">{{@key}} : {{this}}</p>
+          <h4 class="card-title"></h4>
+          <ul>
+          {{#each data}}
+          <li><p class="card-text">{{this}}</p></li>
           {{/each}}
-          <p class="card-text">Area : {{user.location}}</p>
+        </ul>
+          <p class="card-text">Area : {{data}}</p>
           <p class="card-text"><small class="text-muted">{{user.codewith}}</small></p>
           <p>Codewars Rank</p>
           <p>Honor : {{ user.honor }}</p>
@@ -63,6 +68,7 @@
 
     </div>
   </div> --}}
+
 
   <h3>Search Results</h3>
 

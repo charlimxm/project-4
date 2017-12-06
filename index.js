@@ -17,12 +17,13 @@ const MongoStore = require('connect-mongo')(session) // to store session into db
 // require all model files
 const User = require('./models/user')
 const Booking = require('./models/booking')
+const Chat = require('./models/chat')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-const pending_routes = require('./routes/pending_routes')
+// const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
 const dashboard_routes = require('./routes/dashboard_routes')
 
@@ -74,8 +75,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/search', (req, res) => {
-  res.render('search')
+app.get('/recommendation', (req, res) => {
+  res.render('recommendation')
 })
 
 app.get('/', (req, res) => {
@@ -100,7 +101,7 @@ app.post('/search', (req, res) => {
   .catch(err => console.log('err')) // in case we have an error
 })
 
-app.use('/pending', pending_routes)
+// app.use('/pending', pending_routes)
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()

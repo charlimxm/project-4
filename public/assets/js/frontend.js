@@ -3,6 +3,7 @@ $(function () {
   const $searchInput = $('#searchInput')
   const $userResult = $(".userResult")
 
+
   $searchInput.on('keyup', e => { // e is the event object of the keyup event
     var keyword = e.target.value
     if(keyword.length > 0) {

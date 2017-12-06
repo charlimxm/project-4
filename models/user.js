@@ -23,13 +23,13 @@ const userSchema = new Schema({
   location: String,
   about: String,
   codewith: String,
+  preferredLanguage: String,
   languages: Object,
   rejectedPearing: Object,  // will store ids here
   /*
     {
       'dfskjhgskldfghlksd': true
     }
-
     user.rejected[id that you found]
   */
   /*
