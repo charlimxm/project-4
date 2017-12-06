@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
         newUser.save()
           .then(user => {
             passport.authenticate('local', {
-              successRedirect: '/profile',
+              successRedirect: `/profile/${user.username}`,
               failureRedirect: '/register'
             })(req, res)
           },
