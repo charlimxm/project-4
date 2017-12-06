@@ -1,3 +1,4 @@
+
 body {
   display: flex;
   /*min-height: 100vh;*/
@@ -108,7 +109,7 @@ footer.page-footer {
 }
 
 .icon-profile {
-  background: #F2E6A7;
+  background: #2d3e4f;
   padding: 20px;
 }
 
@@ -161,6 +162,18 @@ footer.page-footer {
   -moz-border-radius: 50%;
   border-radius: 50%;
   border: 5px solid rgba(0,0,30,0.8);
+}
+
+#registerForm {
+  width: 35%;
+  text-align: center;
+  color: white;
+}
+#registerLabels label{
+  font-size: 24px;
+}
+#registerLabels .btn-primary{
+  background-color: #c2d658;
 }
 
 
