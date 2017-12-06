@@ -190,9 +190,15 @@ footer.page-footer {
 #registerLabels .btn-primary{
   background-color: #c2d658;
 }
-
-
-
+#profile{
+  color: white;
+}
+#delete {
+  text-align: right;
+}
+#delete .btn-primary:hover{
+  background-color: #d91505;
+}
 
  /**/
 
