@@ -4,11 +4,12 @@ const router = express.Router()
 
 router.get('/:username', (req, res) => {
   var person = req.params.username
-  User.find({
+  User.findOne({
     'username': person
   })
   .then(person => {
-    res.render('profile', person)
+    res.render('profile', {person})
+    console.log(person)
   })
   .catch(err => console.log(err))
 })
