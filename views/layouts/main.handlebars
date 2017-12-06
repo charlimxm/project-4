@@ -28,7 +28,7 @@
         {{#if user}}
         <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
         <a class="nav-item nav-link" href="/chat">Chat</a>
-        <a class="nav-item nav-link" href="/profile">{{user.username}}</a>
+        <a class="nav-item nav-link" href="/profile/{{user.username}}">{{user.username}}</a>
         <a class="nav-item nav-link" href="/logout">Logout</a>
 
         {{else}}

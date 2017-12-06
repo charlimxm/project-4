@@ -2,9 +2,15 @@ const User = require('../models/user')
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  var user = req.user
-  res.render('profile')
+router.get('/:username', (req, res) => {
+  var person = req.params.username
+  User.find({
+    'username': person
+  })
+  .then(person => {
+    res.render('profile', person)
+  })
+  .catch(err => console.log(err))
 })
 
 router.put('/:id', (req, res) => {

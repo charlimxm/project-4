@@ -44,14 +44,12 @@ $(function () {
       //   $('<p class="card-text">').text(val)
       // }
 
-
       const bodyText = '<p>Codewars Rank</p>' +
                       `<p>Honor : ${user.honor}</p>` +
                       `<p>Overall Kyu :  ${user.overallKyu} </p>` +
                       `<p>Leaderboard Position :  ${user.leaderboardPosition} </p>` +
                       `<p>${user.about} </p>` +
                       `<p> ${user.codewith} </p>`
-
 
       $newCardTitle.text(user.username)
       $newAvatar.append('<img src="{{user.imageUrl}}" />')
@@ -78,7 +76,6 @@ $(function () {
   socket.on('chat message', function(msg){
     console.log(msg)
     $('#message').append($('<li>').text(msg))
-    // // console.log($('<li>').text(msg))
     window.scrollTo(0, document.body.scrollHeight)
   })
 
