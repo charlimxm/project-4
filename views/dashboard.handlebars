@@ -1,0 +1,35 @@
+<div class = "container">
+  recommendations page
+
+<p>When redirected to this page, the user can see a bunch of people that are from the same Location, Same Kyu and Language Preferred</p>
+
+
+{{!-- <p>{{user.username}}</p>
+<p>{{#each user.languages}}
+{{lang}} {{kyu}} kyu</p>
+{{/each}}
+<p>{{user.gender}}</p>
+<p>{{user.about}}</p>
+<p>{{user.overallKyu}}</p> --}}
+
+{{#each matchedUser as |mUser|}}
+<p>{{mUser.username}}</p>
+<p>{{#each mUser.languages}}
+{{lang}} {{kyu}} kyu</p>
+{{/each}}
+<p>{{mUser.gender}}</p>
+<p>{{mUser.about}}</p>
+<p>{{mUser.overallKyu}}</p>
+<p>{{mUser.location}}</p>
+{{/each}}
+
+</div>
+
+
+<h3>Search Results</h3>
+
+<div class="userResult">
+
+
+
+</div>

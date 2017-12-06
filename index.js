@@ -24,6 +24,8 @@ const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
 const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
+const dashboard_routes = require('./routes/dashboard_routes')
+
 // initiating express
 const app = express()
 
@@ -82,6 +84,8 @@ app.get('/', (req, res) => {
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
+app.use('/dashboard', dashboard_routes)
+
 app.post('/search', (req, res) => {
   const keyword = req.body.keyword
   const regex = new RegExp(`${keyword}`, 'i')
