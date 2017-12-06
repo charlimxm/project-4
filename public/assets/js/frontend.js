@@ -26,6 +26,13 @@ $(function () {
 
   function showResults(data){
     let allUsers = data.map(user => {
+
+      const $newUsername = $("<h5>").text(user.username)
+      const $newHonor = $("<h5>").text(user.honor)
+
+      $newUsername.append($newHonor)
+      return $newUsername
+
       const $newCol = $('<div class="col-4">')
       const $newCard = $('<div class="card">')
 
@@ -57,10 +64,24 @@ $(function () {
       $newCol.append($newCard)
       return $newCol
 
+
     })
     $userResult.html('')
     $userResult.append(allUsers)
   }
+
+  var socket = io('/')
+  $('form').submit(function(){
+    socket.emit('broadcast chat', $('#m').val())
+    $('#m').val('')
+    return false
+  })
+  socket.on('chat message', function(msg){
+    console.log(msg)
+    $('#message').append($('<li>').text(msg))
+    // // console.log($('<li>').text(msg))
+    window.scrollTo(0, document.body.scrollHeight)
+  })
 
   const $deleteForm = $('.deleteForm')
 

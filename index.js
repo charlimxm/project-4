@@ -13,6 +13,14 @@ const path = require('path') // for Public files
 const passport = require('./config/ppConfig') // to register passport strategies
 const session = require('express-session') // to create session and cookies
 const MongoStore = require('connect-mongo')(session) // to store session into db
+// initiating express
+const app = express()
+
+//socket.io
+// supply express to http server express
+const http = require("http").Server(app) //what is this?
+ // listening on http
+const io = require("socket.io")(http)
 
 // require all model files
 const User = require('./models/user')
@@ -25,10 +33,14 @@ const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
 // const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
+
+// const chat_routes = require('./routes/chat_routes')
+
 const dashboard_routes = require('./routes/dashboard_routes')
 
 // initiating express
 const app = express()
+
 
 // VIEW ENGINES aka handlebars setup
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
@@ -75,9 +87,11 @@ app.use((req, res, next) => {
   next()
 })
 
+
 app.get('/recommendation', (req, res) => {
   res.render('recommendation')
 })
+
 
 app.get('/', (req, res) => {
   res.render('home')
@@ -101,13 +115,27 @@ app.post('/search', (req, res) => {
   .catch(err => console.log('err')) // in case we have an error
 })
 
+
 // app.use('/pending', pending_routes)
 app.use('/chat', chat_routes)
+
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
 
-app.listen(port, () => {
+app.use('/chat', chat_routes)
+// Socket Connection Routes
+
+io.on('connection', function(socket){
+  // console.log('a user connected')
+
+
+    socket.on('broadcast chat', (msg) => {
+      io.emit("chat message", msg)
+    })
+});
+
+http.listen(port, () => {
   console.log(`Server is running on ${port}`)
 })
