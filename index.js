@@ -39,7 +39,7 @@ const chat_routes = require('./routes/chat_routes')
 const dashboard_routes = require('./routes/dashboard_routes')
 
 // initiating express
-const app = express()
+// const app = express()
 
 
 // VIEW ENGINES aka handlebars setup
