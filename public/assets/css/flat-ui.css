@@ -465,6 +465,7 @@ h1,
 h2,
 .h2 {
   font-size: 53px;
+  color: inherit;
 }
 h3,
 .h3 {
@@ -793,7 +794,9 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: #c3d638;
+  border-width: 3px;
+  border-color: #34495E;
 }
 .btn-primary:hover,
 .btn-primary.hover,
@@ -802,7 +805,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #48c9b0;
+  background-color: #75e273;
   border-color: #48c9b0;
 }
 .btn-primary:active,

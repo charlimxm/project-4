@@ -9,7 +9,7 @@ main {
 }
 
 .navbar {
-  background-color: #2C3E50;
+  background-color: #34495E;
   margin: 0px;
 }
 
@@ -65,8 +65,14 @@ footer.page-footer {
 }
 
 .hero-div {
-  background-color: #2C3E50;
+  background-color: white;
   text-align: center;
+  padding: 0px;
+}
+
+.codewar-div {
+  background-color: #faf7de;
+  padding: 20px;
 }
 
 .hexa, .hexa div {
@@ -100,7 +106,8 @@ footer.page-footer {
 }
 
 .how-to-use {
-  /*background-color: #ECF0F1;*/
+  background: #34495E;
+  padding: 40px;
 }
 
 .icon-size {
