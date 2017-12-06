@@ -70,7 +70,7 @@ $(function () {
   }
 
   var socket = io('/')
-  $('form').submit(function(){
+  $('#chat').submit(function(){
     socket.emit('broadcast chat', $('#m').val())
     $('#m').val('')
     return false
