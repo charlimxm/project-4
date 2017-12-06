@@ -7,11 +7,7 @@ const ChatSchema = new mongoose.Schema({
     ref: 'User'
   },
   comment: String,
-  date: Date,
-  acceptedPearingId: {
-    Schema.Types.ObjectId,
-    ref: 'Accepted Pearing'
-  }
+  date: Date
 })
 
 const Chat = mongoose.model("Chat", ChatSchema)
