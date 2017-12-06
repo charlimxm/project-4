@@ -65,7 +65,7 @@
 
   <form action="/profile/{{ user.id }}?_method=PUT" method="post" id="profile">
     <div class="form-group" >
-      <label for="exampleFormControlSelect1">Select Area</label>
+      <label for="exampleFormControlSelect1">Select Language</label>
       <select class="form-control" type="text" name="preferredLanguage" value="{{ user.preferredLanguage }}" id="exampleFormControlSelect1">
         {{#each user.languages}}
         <option>{{lang}}</option>
