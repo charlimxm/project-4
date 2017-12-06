@@ -8,15 +8,16 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   var selectedLanguage = req.body.searchLanguage
+  console.log(selectedLanguage);
 
   User.find({
     "languages.lang": selectedLanguage
   }).sort({ "languages.kyu": 1 })
   .then(data => {
+    res.render('search')
     console.log(data)
-    res.send(data)
+    console.log('-============================-')
   })
-  .catch((err) => console.log(err))
 })
 
 module.exports = router

@@ -29,7 +29,6 @@ const userSchema = new Schema({
     {
       'dfskjhgskldfghlksd': true
     }
-
     user.rejected[id that you found]
   */
   /*
