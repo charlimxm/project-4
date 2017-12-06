@@ -6,19 +6,17 @@ router.get('/', (req, res) => {
   res.render('search') //
 })
 
-router.put('/:id', (req, res) => {
-  var formData = req.body
-  console.log(formData)
+router.post('/', (req, res) => {
+  var selectedLanguage = req.body.searchLanguage
+
+  User.find({
+    "languages.lang": selectedLanguage
+  }).sort({ "languages.kyu": 1 })
+  .then(data => {
+    console.log(data)
+    res.send(data)
+  })
+  .catch((err) => console.log(err))
 })
-
-router.put('/:id', (req, res) => {
-  var formData = req.body
-  console.log(formData)
-})
-
-
-
-
-
 
 module.exports = router

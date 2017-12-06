@@ -21,8 +21,14 @@ router.post('/', (req, res) => {
   rp(options)
     .then(
       function (obj) {
-        for (language in obj.ranks.languages) {
-          languages[language] = obj.ranks.languages[language].name
+        var arr = []
+        var languages = obj.ranks.languages
+        for (x in languages) {
+          var langs = {
+            lang: x,
+            kyu: languages[x].name.replace(' kyu','')
+          }
+          arr.push(langs)
         }
         var formData = req.body.user
         var newUser = new User({
@@ -33,7 +39,7 @@ router.post('/', (req, res) => {
           imageUrl: formData.imageUrl,
           honor: obj.honor,
           leaderboardPosition: obj.leaderboardPosition,
-          languages: languages,
+          languages: arr,
           overallKyu: obj.ranks.overall.name,
           about: formData.about,
           codewith: formData.codewith
