@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
           languages: arr,
           overallKyu: obj.ranks.overall.name,
           about: formData.about,
-          codewith: formData.codewith
+          codewith: formData.codewith,
         })
         newUser.save()
           .then(user => {

@@ -3,6 +3,7 @@ $(function () {
   const $searchInput = $('#searchInput')
   const $userResult = $(".userResult")
 
+
   $searchInput.on('keyup', e => { // e is the event object of the keyup event
     var keyword = e.target.value
     if(keyword.length > 0) {
@@ -27,10 +28,11 @@ $(function () {
     let allUsers = data.map(user => {
       const $newUsername = $("<h5>").text(user.username)
       const $newHonor = $("<h5>").text(user.honor)
-      
-      $newUsername.append($newHonor)
-      return $newUsername
+      const $newLang = $("<h5>").text(user.languages)
 
+      $newUsername.append($newHonor)
+      $newUsername.append($newLang)
+      return $newUsername
     })
     $userResult.html('')
     $userResult.append(allUsers)

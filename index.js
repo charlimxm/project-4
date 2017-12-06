@@ -22,7 +22,7 @@ const Booking = require('./models/booking')
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-const pending_routes = require('./routes/pending_routes')
+// const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
 // initiating express
 const app = express()
@@ -96,7 +96,7 @@ app.post('/search', (req, res) => {
   .catch(err => console.log('err')) // in case we have an error
 })
 
-app.use('/pending', pending_routes)
+// app.use('/pending', pending_routes)
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()

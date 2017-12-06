@@ -16,7 +16,6 @@ router.post('/', (req, res) => {
   .then(data => {
     res.render('search')
     console.log(data)
-    console.log('-============================-')
   })
 })
 
