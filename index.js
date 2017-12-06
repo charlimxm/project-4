@@ -98,10 +98,7 @@ app.post('/recommendation', (req, res) => {
   .catch(err => console.log('err')) // in case we have an error
 })
 
-<<<<<<< HEAD
 // app.use('/pending', pending_routes)
-=======
->>>>>>> 3ac87011e642986abd1b8cf8fcfc812ab6e02857
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()
