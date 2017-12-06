@@ -22,7 +22,6 @@ const Booking = require('./models/booking')
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-const search_routes = require('./routes/search_routes')
 const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
 // initiating express
@@ -73,13 +72,30 @@ app.use((req, res, next) => {
   next()
 })
 
+app.get('/search', (req, res) => {
+  res.render('search')
+})
+
 app.get('/', (req, res) => {
   res.render('home')
 })
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
-app.use('/search', search_routes)
+app.post('/search', (req, res) => {
+  const keyword = req.body.keyword
+  const regex = new RegExp(`${keyword}`, 'i')
+  console.log(keyword)
+  console.log('fetched')
+
+  User.find({
+    "languages.lang": regex
+  })
+  .sort({ "languages.kyu": 1 })
+  .then(data => res.send(data))
+  .catch(err => console.log('err')) // in case we have an error
+})
+
 app.use('/pending', pending_routes)
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
