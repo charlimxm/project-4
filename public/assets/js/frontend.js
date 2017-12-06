@@ -1,37 +1,39 @@
 $(function () {
 
-  $('select').material_select()
-
-  const $userSearch = $('#userSearch')
+  const $searchInput = $('#searchInput')
   const $userResult = $(".userResult")
 
-  $userSearch.on('submit', e => {
+  $searchInput.on('keyup', e => { // e is the event object of the keyup event
+    var keyword = e.target.value
+    if(keyword.length > 0) {
+    var json = JSON.stringify({
+      keyword
+    })
+
     fetch('/search', {
       method: 'POST',
       headers: {
-        "Content-Type": 'application/json'},
+        "Content-Type": 'application/json'
+      },
       body: json
     })
-    .then(response => {
-      return response.json()
-    })
-    .then(userResult)
+    .then(response => response.json())
+    .then(data => showResults(data))
     .catch(err=> console.log(err))
+  }
   })
 
   function showResults(data){
-    let allResults = data.map(user => {
-
-      const $newUsername = $("<li>").text(user.username)
-      const $newHonor = $("<li>").text(user.honor)
-      const $newLeaderboardPosition = $("<li>").text(user.leaderboardPosition)
-      $newHonor.append($newLeaderboardPosition)
+    let allUsers = data.map(user => {
+      const $newUsername = $("<h5>").text(user.username)
+      const $newHonor = $("<h5>").text(user.honor)
+      
       $newUsername.append($newHonor)
-      return $newList
+      return $newUsername
 
     })
     $userResult.html('')
-    $userResult.append(allResults)
+    $userResult.append(allUsers)
   }
 
   const $deleteForm = $('.deleteForm')

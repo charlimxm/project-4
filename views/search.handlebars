@@ -1,16 +1,9 @@
 <div class="icon-profile">
 <div class="container">
-  <form class="col s12 m6" action="/search" method="post">
-    <label for="searchLanguage">Search Language: </label>
-    <select name="searchLanguage">
-      <option value="" disabled selected>Please select</option>
-      {{#each user.languages}}
-        <option value="{{lang}}">{{lang}}</option>
-      {{/each}}
 
-    </select>
-    <button type="button" class="btn btn-primary" type="submit" name="action">Submit</button>
-  </form>
+  <h3>Search Pear</h3>
+  <input id="searchInput" type="text">
+
 <br>
 <br>
 
@@ -79,5 +72,10 @@
   </div>
 
 
+  <h3>Search Results</h3>
+  <div class="userResult">
+
   </div>
+
+
 </div>
