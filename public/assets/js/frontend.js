@@ -26,17 +26,62 @@ $(function () {
 
   function showResults(data){
     let allUsers = data.map(user => {
+
       const $newUsername = $("<h5>").text(user.username)
       const $newHonor = $("<h5>").text(user.honor)
-      const $newLang = $("<h5>").text(user.languages)
 
       $newUsername.append($newHonor)
-      $newUsername.append($newLang)
       return $newUsername
+
+      const $newCol = $('<div class="col-4">')
+      const $newCard = $('<div class="card">')
+
+      const $newCardBody = $('<div class="card-body">')
+
+      const $newAvatar = $('<div class="avatar">')
+      const $newCardTitle = $('<h4 class="card-title">')
+
+      // const languages = $.each(user.languages, function(i, val) {
+      //   $('<p class="card-text">').text(val)
+      // }
+
+
+      const bodyText = '<p>Codewars Rank</p>' +
+                      `<p>Honor : ${user.honor}</p>` +
+                      `<p>Overall Kyu :  ${user.overallKyu} </p>` +
+                      `<p>Leaderboard Position :  ${user.leaderboardPosition} </p>` +
+                      `<p>${user.about} </p>` +
+                      `<p> ${user.codewith} </p>`
+
+
+      $newCardTitle.text(user.username)
+      $newAvatar.append('<img src="{{user.imageUrl}}" />')
+        $newCardBody.append(bodyText)
+
+      $newCardBody.append($newAvatar, $newCardTitle, $newCardBody)
+
+      $newCard.append($newCardBody)
+      $newCol.append($newCard)
+      return $newCol
+
+
     })
     $userResult.html('')
     $userResult.append(allUsers)
   }
+
+  var socket = io('/')
+  $('form').submit(function(){
+    socket.emit('broadcast chat', $('#m').val())
+    $('#m').val('')
+    return false
+  })
+  socket.on('chat message', function(msg){
+    console.log(msg)
+    $('#message').append($('<li>').text(msg))
+    // // console.log($('<li>').text(msg))
+    window.scrollTo(0, document.body.scrollHeight)
+  })
 
   const $deleteForm = $('.deleteForm')
 
