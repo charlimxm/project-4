@@ -14,7 +14,8 @@ router.put('/:id', (req, res) => {
     email: formData.email,
     about: formData.about,
     codewith: formData.codewith,
-    location: formData.location
+    location: formData.location,
+    imageUrl: formData.imageUrl
   })
   .then(() => res.redirect(`/profile`))
   .catch(err => console.log(err))
