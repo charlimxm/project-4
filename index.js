@@ -17,6 +17,7 @@ const MongoStore = require('connect-mongo')(session) // to store session into db
 // require all model files
 const User = require('./models/user')
 const Booking = require('./models/booking')
+const Chat = require('./models/chat')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')
@@ -24,6 +25,7 @@ const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
 // const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
+
 // initiating express
 const app = express()
 
@@ -72,8 +74,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/search', (req, res) => {
-  res.render('search')
+app.get('/recommendation', (req, res) => {
+  res.render('recommendation')
 })
 
 app.get('/', (req, res) => {
@@ -82,7 +84,7 @@ app.get('/', (req, res) => {
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
-app.post('/search', (req, res) => {
+app.post('/recommendation', (req, res) => {
   const keyword = req.body.keyword
   const regex = new RegExp(`${keyword}`, 'i')
   console.log(keyword)
@@ -96,7 +98,10 @@ app.post('/search', (req, res) => {
   .catch(err => console.log('err')) // in case we have an error
 })
 
+<<<<<<< HEAD
 // app.use('/pending', pending_routes)
+=======
+>>>>>>> 3ac87011e642986abd1b8cf8fcfc812ab6e02857
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()
