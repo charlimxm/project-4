@@ -2,7 +2,11 @@
 <div class ="icon-profile">
   <div class ="container">
     <div class="row">
+<<<<<<< HEAD
       <img src = "{{ user.imageUrl }}" class="img-thumbnail" max-height="200px">
+=======
+      <img src = "{{ person.imageUrl }}" class="img-thumbnail" max-height="200px">
+>>>>>>> 88df7b5a5eab5bffcdcf91d38b525fa6fa6ad2b0
     </div>
     <br>
     <div class="row">
@@ -10,7 +14,7 @@
         <div class="tile">
           <h3 class="tile-title">Languages</h3>
           <div class="container ">
-            {{#each user.languages}}
+            {{#each person.languages}}
               <p><i class="icon-size devicon-{{lang}}-plain colored"> {{kyu}} kyu</i></p>
             {{/each}}
           </div>
@@ -19,20 +23,20 @@
       <div class="col-sm">
         <div class="tile">
           <h3 class="tile-title">
-            {{ user.username }}
+            {{person.username}}
           </h3>
             <p>Codewars Rank</p>
-            <p>Honor : {{ user.honor }}</p>
-            <p>Overall Kyu : {{ user.overallKyu }}</p>
-            <p>Leaderboard Position : {{ user.leaderboardPosition }}</p>
+            <p>Honor : {{ person.honor }}</p>
+            <p>Overall Kyu : {{ person.overallKyu }}</p>
+            <p>Leaderboard Position : {{ person.leaderboardPosition }}</p>
         </div>
       </div>
       <div class="col-sm">
         <div class="tile">
-          <h5>{{user.location}} Area</h5>
+          <h5>{{person.location}} Area</h5>
         </div>
         <div class="tile">
-          <h5>{{user.preferredLanguage}}</h5>
+          <h5>{{person.preferredLanguage}}</h5>
         </div>
       </div>
     </div>
@@ -44,7 +48,7 @@
             My Story :
           </h3>
           <div class="container ">
-            <p>{{ user.about }}</p>
+            <p>{{ person.about }}</p>
           </div>
         </div>
       </div>
@@ -54,14 +58,19 @@
             Code with me :
           </h3>
           <div class="container ">
-            <p>{{ user.codewith }}</p>
+            <p>{{ person.codewith }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
 <div id="profile">
+=======
+{{#equal user.username person.username}}
+
+>>>>>>> 88df7b5a5eab5bffcdcf91d38b525fa6fa6ad2b0
   <form action="/profile/{{ user.id }}?_method=PUT" method="post">
     <div class="form-group" >
       <label for="exampleFormControlSelect1">Select Area</label>
@@ -114,6 +123,8 @@
     </form>
   </div>
   <br>
+
+  {{/equal}}
 </div>
 </div>
 </div>

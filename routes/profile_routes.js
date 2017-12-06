@@ -2,6 +2,10 @@ const User = require('../models/user')
 const express = require('express')
 const router = express.Router()
 
+// router.get('/', (req, res) => {
+//   res.render('profile', req.user)
+// })
+
 router.get('/:username', (req, res) => {
   var person = req.params.username
   User.findOne({
@@ -9,7 +13,6 @@ router.get('/:username', (req, res) => {
   })
   .then(person => {
     res.render('profile', {person})
-    console.log(person)
   })
   .catch(err => console.log(err))
 })
