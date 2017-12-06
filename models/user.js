@@ -23,6 +23,7 @@ const userSchema = new Schema({
   location: String,
   about: String,
   codewith: String,
+  preferredLanguage: String,
   languages: Object,
   preferredLanguage: String,
     // will store ids here
@@ -30,7 +31,6 @@ const userSchema = new Schema({
     {
       'dfskjhgskldfghlksd': true
     }
-
     user.rejected[id that you found]
   */
   /*

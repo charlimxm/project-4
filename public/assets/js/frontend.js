@@ -3,6 +3,7 @@ $(function () {
   const $searchInput = $('#searchInput')
   const $userResult = $(".userResult")
 
+
   $searchInput.on('keyup', e => { // e is the event object of the keyup event
     var keyword = e.target.value
     if(keyword.length > 0) {
@@ -25,11 +26,44 @@ $(function () {
 
   function showResults(data){
     let allUsers = data.map(user => {
+
       const $newUsername = $("<h5>").text(user.username)
       const $newHonor = $("<h5>").text(user.honor)
 
       $newUsername.append($newHonor)
       return $newUsername
+
+      const $newCol = $('<div class="col-4">')
+      const $newCard = $('<div class="card">')
+
+      const $newCardBody = $('<div class="card-body">')
+
+      const $newAvatar = $('<div class="avatar">')
+      const $newCardTitle = $('<h4 class="card-title">')
+
+      // const languages = $.each(user.languages, function(i, val) {
+      //   $('<p class="card-text">').text(val)
+      // }
+
+
+      const bodyText = '<p>Codewars Rank</p>' +
+                      `<p>Honor : ${user.honor}</p>` +
+                      `<p>Overall Kyu :  ${user.overallKyu} </p>` +
+                      `<p>Leaderboard Position :  ${user.leaderboardPosition} </p>` +
+                      `<p>${user.about} </p>` +
+                      `<p> ${user.codewith} </p>`
+
+
+      $newCardTitle.text(user.username)
+      $newAvatar.append('<img src="{{user.imageUrl}}" />')
+        $newCardBody.append(bodyText)
+
+      $newCardBody.append($newAvatar, $newCardTitle, $newCardBody)
+
+      $newCard.append($newCardBody)
+      $newCol.append($newCard)
+      return $newCol
+
 
     })
     $userResult.html('')

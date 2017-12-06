@@ -1,43 +1,41 @@
 <div class="icon-profile">
 <div class="container">
 
-  <h3>Search Pear</h3>
-  <input id="searchInput" type="text">
+  {{!-- <h3>Search Pear</h3> --}}
+  {{!-- <input id="searchInput" type="text"> --}}
 
 <br>
 <br>
+<div>
+  {{data}}
+</div>
 
-    <div class="card-deck">
-      <div class="card">
+    {{!-- <div class="card-deck"> --}}
+      {{!-- <div class="card">
         <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
         <div class="avatar">
           <img src="/assets/img/dayah.jpg" alt="" />
         </div>
         <div class="card-body">
-          <h4 class="card-title">{{user.username}}</h4>
-          {{#each user.languages}}
-          <p class="card-text">{{@key}} : {{this}}</p>
+          <h4 class="card-title"></h4>
+          <ul>
+          {{#each data}}
+          <li><p class="card-text">{{this}}</p></li>
           {{/each}}
-          <p class="card-text">Area : {{user.location}}</p>
+        </ul>
+          <p class="card-text">Area : {{data}}</p>
           <p class="card-text"><small class="text-muted">{{user.codewith}}</small></p>
-          <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            More Information
-          </a>
+          <p>Codewars Rank</p>
+          <p>Honor : {{ user.honor }}</p>
+          <p>Overall Kyu : {{ user.overallKyu }}</p>
+          <p>Leaderboard Position : {{ user.leaderboardPosition }}</p>
+          <p>{{ user.about }}</p>
+          <p>{{ user.codewith }}</p>
         </div>
 
-          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              <p>Codewars Rank</p>
-              <p>Honor : {{ user.honor }}</p>
-              <p>Overall Kyu : {{ user.overallKyu }}</p>
-              <p>Leaderboard Position : {{ user.leaderboardPosition }}</p>
-              <p>{{ user.about }}</p>
-              <p>{{ user.codewith }}</p>
-            </div>
-          </div>
-        </div>
+        </div> --}}
 
-        <div class="card">
+      {{!-- <div class="card">
           <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
           <div class="avatar">
             <img src="/assets/img/dayah.jpg" alt="" />
@@ -69,13 +67,17 @@
 
 
     </div>
-  </div>
+  </div> --}}
+
 
 
   <h3>Search Results</h3>
+
   <div class="userResult">
 
   </div>
 
 
+
+</div>
 </div>
