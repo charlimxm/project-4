@@ -22,7 +22,6 @@ const Booking = require('./models/booking')
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-// const search_routes = require('./routes/search_routes')
 const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
 // initiating express
