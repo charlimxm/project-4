@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
   res.render('profile')
 })
 
-
 router.put('/:id', (req, res) => {
   var formData = req.body
   User.findByIdAndUpdate(req.params.id, {

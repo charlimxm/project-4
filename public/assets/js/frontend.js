@@ -1,5 +1,4 @@
 $(function () {
-
   const $searchInput = $('#searchInput')
   const $userResult = $(".userResult")
 
