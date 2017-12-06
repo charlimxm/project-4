@@ -24,7 +24,8 @@ const userSchema = new Schema({
   about: String,
   codewith: String,
   languages: Object,
-  rejectedPearing: Object,  // will store ids here
+  preferredLanguage: String,
+    // will store ids here
   /*
     {
       'dfskjhgskldfghlksd': true
@@ -45,9 +46,6 @@ const userSchema = new Schema({
     status: pending
   }]
   */
-  invitedPearing: Object,
-  pendingPearings: Object,
-  acceptedPearing: Array,
   location: String
 })
 
