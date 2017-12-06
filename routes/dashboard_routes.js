@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
      "username" : { $ne : req.user.username},
       "location": req.user.location,
       "overallKyu": req.user.overallKyu,
+      "preferredLanguage": req.user.preferredLanguage
     }
   )
     .then(matchedUser => {

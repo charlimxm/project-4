@@ -13,6 +13,8 @@
 <p>{{user.overallKyu}}</p> --}}
 
 {{#each matchedUser as |mUser|}}
+<img src="{{mUser.imageUrl}}" alt="" />
+
 <p>{{mUser.username}}</p>
 <p>{{#each mUser.languages}}
 {{lang}} {{kyu}} kyu</p>
