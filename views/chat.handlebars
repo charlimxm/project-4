@@ -1,12 +1,16 @@
 <ul class="pages">
   <p class="chat page">
     <div class="chatArea">
-      <ul id="message"></ul>
+      <ul id="message">
+        {{#each chat as |chat|}}
+          <li>{{chat.user}}: {{chat.comment}}</li>
+        {{/each}}
+
+      </ul>
     </div>
-    <ul id="message"></ul>
     <form id="chat" action="">
       <input type="hidden" id="userName" value="{{user.username}}">
-      <input type="hidden" id="userPairId" value="{{user.pairId}}">
+      <input type="hidden" id="userPairId" value="{{pairId}}">
       <input id="m" autocomplete="off" /><button>Enter</button>
     </form>
   </p>

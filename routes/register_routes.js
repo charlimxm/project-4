@@ -44,16 +44,19 @@ router.post('/', (req, res) => {
           about: formData.about,
           codewith: formData.codewith,
         })
+        newUser.save()
         .then(user => {
-            passport.authenticate('local', {
-              successRedirect: `/profile/${user.username}`,
-              failureRedirect: '/register'
-            })(req, res)
-          },
-            err => console.log('err')
-          )
+                  passport.authenticate('local', {
+                    successRedirect: `/profile/${user.username}`,
+                    failureRedirect: '/register'
+                  })(req, res)
+                },
+                  err => console.log(err)
+                )
+            },
+              err => console.log('Username' + req.body.user.username + ' does not exist')
+            )
       })
-})
 
 
 

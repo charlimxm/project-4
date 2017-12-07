@@ -97,25 +97,29 @@ $(function () {
   })
 
 
-    var socket = io('/')
-    var userPairId = $("#userPairId").val()
-    let nsp = io(`/${userPairId}`)
 
+
+
+    // Socket events
     // Click events
-
+    var userPairId = $("#userPairId").val()
+    var socket = io('/')
+    // socket = io(`/${userPairId ? userPairId : ''}`)
+    console.log('loaded')
     $('#chat').submit(function(){
+
       socket.emit('chat message', {
         user: $("#userName").val(),
         comment: $('#m').val(),
         chatroom: $("#userPairId").val()
       })
       $('#m').val('')
+
       return false
     })
 
-    // Socket events
-
-    nsp.on('chat message', function(msg) {
+    socket.on("chat broadcast", function(msg) {
+      console.log('chaT!!!!!')
       $("#message").append(
         $(`<li class='flow-text chatMessage'>${msg.user}: ${msg.comment}</li>`)
       )

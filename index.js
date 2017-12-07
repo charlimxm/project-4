@@ -17,7 +17,6 @@ const MongoStore = require('connect-mongo')(session) // to store session into db
 // initiating express
 const app = express()
 
-
 //socket.io
 // supply express to http server express
 const http = require("http").Server(app) //what is this?
@@ -36,6 +35,7 @@ const profile_routes = require('./routes/profile_routes')
 const chat_routes = require('./routes/chat_routes')
 const dashboard_routes = require('./routes/dashboard_routes')
 const codewars_routes = require('./routes/codewars_routes')
+const websocket = require('./routes/websocket')(io)
 
 // VIEW ENGINES aka handlebars setup
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
@@ -80,6 +80,7 @@ app.use(passport.session())
 app.use((req, res, next) => {
   app.locals.user = req.user
   app.locals.chat = req.chat
+  req.socket = io
   next()
 })
 
@@ -114,14 +115,6 @@ app.get('/logout', (req, res) => {
   res.redirect('/')
 })
 app.use('/codewars', codewars_routes)
-
-// Socket Connection Routes
-io.on('connection', function(socket){
-  // console.log('a user connected')
-  socket.on('chat message', (msg) => {
-    io.emit("chat message", msg)
-  })
-})
 
 http.listen(port, () => {
   console.log(`Server is running on ${port}`)

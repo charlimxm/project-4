@@ -18,12 +18,10 @@ const userSchema = new Schema({
     required: true
   },
   gender: {
-    type: String,
-    required: true
+    type: String
   },
   imageUrl: {
     type: String,
-    required: true
   },
   honor: Number,
   leaderboardPosition: Number,
@@ -33,10 +31,10 @@ const userSchema = new Schema({
   about: String,
   codewith: String,
   preferredLanguage: String,
-  pairId: {
+  pairId: [{
      type: Schema.Types.ObjectId,
      ref: 'Pair'
-   }
+   }]
   // chatRef: [{
   //   userId: {
   //     type: Schema.Types.ObjectId,

@@ -5,10 +5,10 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   User.find({
-     "username" : { $ne : req.user.username},
+      "username" : { $ne : req.user.username},
       "location": req.user.location,
       "overallKyu": req.user.overallKyu,
-      "preferredLanguage": req.user.preferredLanguage
+      "preferredLanguage": req.user.preferredLanguage,
     }
   )
     .then(matchedUser => {

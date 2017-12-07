@@ -4,47 +4,70 @@ const Chat = require('../models/chat')
 const express = require('express')
 const router = express.Router()
 
+const ObjectId = require('mongoose').Types.ObjectId
+
 
 router.get('/:id', (req, res) => {
-  res.render('chat')
+  const io = req.socket
+
+  io.on('connection', function(socket) {
+    socket.join(`/${req.params.id}`)
+    console.log('room join to : ', req.params.id)
+    console.log(req.params.id)
+  })
+  // retrieve history
+  // find the pair based on :id
+  // return res.send(req.params.id)
+  Pair.find({
+    $or: [
+      { 'userOneId': new ObjectId(req.params.id) },
+      { 'userTwoId': new ObjectId(req.params.id) }
+    ]
+  })
+    .then((pair) => {
+      // the history array
+      const chat = pair.chatMessages
+      res.render('chat', {chat,
+                  pairId: req.params.id})
+    })
 })
 
 router.post('/', (req, res) => {
   var userOneId = req.body.userOne
   var userTwoId = req.body.userTwo
-  var newPair = new Pair ({
-    userOneId: userOneId,
-    userTwoId: userTwoId
+  // check the existence the pair
+  Pair.find({
+    $and: [{"userOneId": userOneId || userTwoId},
+           {"userTwoId": userTwoId || userOneId}
+         ]
   })
-  newPair.save()
-// console.log("NEW PAIR", newPair)
-  .then(() => {
-    res.redirect(`/chat/${newPair._id}`)
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-})
+    .then((chatroomList) => {
+      // if not(no chatroom), create new pair and save.
+      if (chatroomList.length === 0) {
+        // create new pair(chatroom)
+        var newPair = new Pair ({
+          userOneId: userOneId,
+          userTwoId: userTwoId
+        })
+        // save the new one
+        newPair.save()
+          .then(() => {
+            // if the saving is success
+            // find the saved pair(chatroom)
 
-
-module.exports = io => {
-  io.on("connection", function(socket) {
-    socket.on("chat message", msg => {
-      let nsp = io.of(`/${msg.pairId}`)
-      nsp.emit("chat message", {
-        user: msg.user,
-        message: msg.message
-      })
-
-      let newChat = new Chat({
-        user: msg.user,
-        comment: msg.message,
-        date: Date.now(),
-        chatroom: msg.pairId
-      })
-      newChat.save()
+            Pair.find({
+              // "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
+              $and: [{"userOneId": userOneId || userTwoId},
+                     {"userTwoId": userTwoId || userOneId}
+                   ]
+            })
+            .then((chatroomList) => res.redirect(`/chat/${chatroomList[0]._id}`))
+          })
+      } else {
+        res.redirect(`/chat/${chatroomList[0]._id}`)
+      }
     })
-  })
-}
+    .catch((err) => console.log('err'))
+})
 
 module.exports = router

@@ -5,13 +5,10 @@ const chatSchema = new mongoose.Schema({
   user: String,
   comment: String,
   date: Date,
-  chatroom: [{
+  chatroom: {
     type: Schema.Types.ObjectId,
     ref: 'Pair'
-  }]
-  // comment: [
-  //   {name: 'alex', chattext: 'hell'}
-  // ]
+  }
 })
 
 const Chat = mongoose.model("Chat", chatSchema)
