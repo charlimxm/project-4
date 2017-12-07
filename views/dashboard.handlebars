@@ -1,63 +1,40 @@
 <div class = "container">
-  recommendations page
-
-<p>When redirected to this page, the user can see a bunch of people that are from the same Location, Same Kyu and Language Preferred</p>
-
-
-{{!-- <p>{{user.username}}</p>
-<p>{{#each user.languages}}
-{{lang}} {{kyu}} kyu</p>
-{{/each}}
-<p>{{user.gender}}</p>
-<p>{{user.about}}</p>
-<p>{{user.overallKyu}}</p> --}}
+  <div class= "row">
+    <div class="col-md-3">
+<div class="card">
+  {{!-- <p>When redirected to this page, the user can see a bunch of people that are from the same Location, Same Kyu and Language Preferred</p> --}}
+  <h4>Current User</h4>
+  <p>{{user.username}} {{user.overallKyu}} {{user.location}}</p>
+  {{!-- <p>{{user.overallKyu}}</p>
+  <p>{{user.location}}</p> --}}
+  <p>
+    Want to see more recommended pears? Update your profile Preferred Location!
+  </p>
+</div>
+</div>
 
 {{#each matchedUser as |mUser|}}
 
-<div class="col-md-4">
-  <div class="card card-profile">
-    <div class="card-avatar">
-      <img class="img" src="{{user.imageUrl}}" />
+<div class="col-md-3">
+  <div class="card" style="width: 20rem;">
+    <div class="avatar">
+    <img class="card-img-top" src="/assets/img/dayah.jpg" alt="Card image cap">
     </div>
-
-    <div class="table">
-      <h6 class="card-caption">{{mUser.username}}</h6>
-      <p>{{#each mUser.languages}}
-      {{lang}} {{kyu}} kyu</p>
-      {{/each}}
-      <p>{{mUser.gender}}</p>
-      <p>{{mUser.about}}</p>
-      <p>{{mUser.overallKyu}}</p>
-      <p>{{mUser.location}}</p>
+    <div class="card-body">
+      <h4 class="card-title">{{mUser.username}}</h4>
+      <p class="card-text">Gender: {{mUser.gender}}</p>
+      <p class="card-text">Overall Kyu: {{mUser.overallKyu}}</p>
+      <a href="#" class="btn btn-primary">Chat!</a>
+      <a href="/profile/{{mUser.username}}" class="btn btn-primary">See Profile</a>
     </div>
   </div>
 </div>
 {{/each}}
-
-
-{{!-- <p>{{mUser.username}}</p> --}}
-{{!-- <img class="img" src="{{mUser.imageUrl}}" /> --}}
-{{!-- <p>{{#each mUser.languages}}
-{{lang}} {{kyu}} kyu</p>
-{{/each}}
-<p>{{mUser.gender}}</p>
-<p>{{mUser.about}}</p>
-<p>{{mUser.overallKyu}}</p>
-<p>{{mUser.location}}</p>
-{{/each}}
-
 </div>
 
-<div class="col-md-4">
-  <div class="card card-profile">
-    <div class="card-avatar">
-
-    </div>
-  </div>
-</div> --}}
 
 
-{{!-- <h3>Search Results</h3>
 
-<div class="userResult">
-</div> --}}
+
+
+</div>
