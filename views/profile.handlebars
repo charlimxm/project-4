@@ -1,5 +1,4 @@
 <div class="container">
-<br>
 <div class ="icon-profile">
   <div class ="container">
     <div class="row">
@@ -64,9 +63,9 @@
 
 {{#equal user.username person.username}}
 
-  <form action="/profile/{{ user.id }}?_method=PUT" method="post">
+  <form action="/profile/{{ user.id }}?_method=PUT" method="post" id="profile">
     <div class="form-group" >
-      <label for="exampleFormControlSelect1">Select Area</label>
+      <label for="exampleFormControlSelect1">Select Language</label>
       <select class="form-control" type="text" name="preferredLanguage" value="{{ user.preferredLanguage }}" id="exampleFormControlSelect1">
         {{#each user.languages}}
         <option>{{lang}}</option>
@@ -104,21 +103,20 @@
       <input type="text" class="form-control" name="email" value="{{ user.email }}">
     <br>
     <br>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-      <i class="material-icons right"></i>
-    </button>
+    <button class="btn btn-block btn-lg btn-primary" type="submit" name="action" value="Submit">Submit</button>
   </form>
-
-
-  <h5>Delete Profile</h5>
-  <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Delete
-      <i class="material-icons right"></i>
-    </button>
-  </form>
-  <br>
+    <br>
+    <br>
+    <br>
+  <div id="delete">
+    <h5>Delete Profile</h5>
+    <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
+      <button class="btn btn-lg btn-primary" type="submit" name="action" value="Submit">DELETE</button>
+    </form>
+  </div>
   <br>
 
   {{/equal}}
+</div>
 </div>
 </div>
