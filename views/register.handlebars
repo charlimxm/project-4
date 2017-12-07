@@ -15,16 +15,16 @@
       <label for="password">Password</label><br>
       <input type="password" name="user[password]" placeholder="Enter your password here" class="form-control"><br>
 
-      <div class="form-check form-check-inline">
-        <label for="gender">Gender</label><br>
-        <input class="with-gap" type="radio" name="user[gender]" value="male" id="chooseGender1" />
-        <label for="chooseGender1">Male</label>
-        <input class="with-gap" type="radio" name="user[gender]" value="female" id="chooseGender2" />
-        <label for="chooseGender2">Female</label>
-      </div>
-      <br>
-      <label for="image">Profile Photo:</label><br>
-      <input type="hidden" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" /><br>
+  <div class="form-check form-check-inline">
+  <label for="gender">Gender</label><br>
+  <input class="with-gap" type="radio" name="user[gender]" value="male" id="chooseGender1" />
+  <label for="chooseGender1">Male</label>
+  <input class="with-gap" type="radio" name="user[gender]" value="female" id="chooseGender2" />
+  <label for="chooseGender2">Female</label>
+  </div>
+  <br>
+  <label for="image">Profile Photo:</label><br>
+  <input type="hidden" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" data-crop /><br>
 
       <input type="hidden" name="user[about]" value="Add a short introduction of yourself here" class="black-text" />
       <input type="hidden" name="user[codewith]" value="State your available days & timings" class="black-text" />

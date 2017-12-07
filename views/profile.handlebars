@@ -1,21 +1,23 @@
 <div class="container">
-  <div class="icon-profile">
-    <div class="container">
-      <div class="row">
-        <img src="{{ person.imageUrl }}" class="img-thumbnail" max-height="200px">
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-sm">
-          <div class="tile">
-            <h3 class="tile-title">Languages</h3>
-            <div class="container ">
-              {{#each person.languages}}
-                <p><i class="icon-size devicon-{{lang}}-plain colored"> {{kyu}} kyu</i></p>
-              {{/each}}
-            </div>
+<div class ="icon-profile">
+  <div class ="container">
+    <div class="row d-flex justify-content-center">
+      <div class="profile-pic ">
+      <img src = "{{ person.imageUrl }}" >
+    </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm">
+        <div class="tile">
+          <h3 class="tile-title">Languages</h3>
+          <div class="container ">
+            {{#each person.languages}}
+              <p><i class="icon-size devicon-{{lang}}-plain colored"> {{kyu}} kyu</i></p>
+            {{/each}}
           </div>
         </div>
+      </div>
         <div class="col-sm">
           <div class="tile">
             <h3 class="tile-title">
@@ -34,6 +36,8 @@
           <div class="tile">
             <h5>{{person.preferredLanguage}}</h5>
           </div>
+          <form action="/profile/{{ person.username }}?_method=PUT" method="post" id="updateCodewars">
+            <button class="btn btn-block btn-lg btn-primary" type="submit" name="action" value="Update">Update Kyu</button>
         </div>
       </div>
 
@@ -81,39 +85,40 @@
       <option>East</option>
       <option>West</option>
       </select>
-        </div>
-        <br>
-        <br>
-        <input type="hidden" name="slug" value="{{ user.username }}">
-        <label for="aboutme">My Story:</label><br>
-        <input type="text" class="form-control" rows="3" cols="80" name="about" value="{{ user.about }}">
-        <small id="emailHelp" class="form-text text-muted">Write something about yourself, others will get to know you better.</small>
-        <br>
-        <br>
-        <label for="codewith">Let people know about your available time and days :</label><br>
-        <input type="text" class="form-control" rows="3" cols="80" name="codewith" value="{{ user.codewith }}">
-        <small id="emailHelp" class="form-text text-muted">Let people know more about your available time, days and exact location.</small>
-        <br>
-        <label for="image">Change Profile Photo:</label><br>
-        <input type="text" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" value="{{user.imageUrl}}"> {{ user.imageUrl }}
-        <br>
-        <br>
-        <label for="email">Update Email address</label><br>
-        <input type="text" class="form-control" name="email" value="{{ user.email }}">
-        <br>
-        <br>
-        <button class="btn btn-block btn-lg btn-primary" type="submit" name="action" value="Submit">Submit</button>
-      </form>
-      <br>
-      <br>
-      <br>
-      <div id="delete">
-        <h5>Delete Profile</h5>
-        <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
-          <button class="btn btn-lg btn-primary" type="submit" name="action" value="Submit">DELETE</button>
-        </form>
-      </div>
-      <br>
+    </div>
+    <br>
+    <br>
+    <input type="hidden" name="slug" value="{{ user.username }}">
+    <label for="aboutme">My Story:</label><br>
+      <input type="text" class="form-control" rows="3" cols="80" name="about" value="{{ user.about }}">
+      <small id="emailHelp" class="form-text text-muted">Write something about yourself, others will get to know you better.</small>
+    <br>
+    <br>
+    <label for="codewith">Let people know about your available time and days :</label><br>
+      <input type="text" class="form-control" rows="3" cols="80" name="codewith" value="{{ user.codewith }}">
+      <small id="emailHelp" class="form-text text-muted">Let people know more about your available time, days and exact location.</small>
+    <br>
+      {{!-- <label for="image">Change Profile Photo:</label><br>
+      <input type="text" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" value="{{user.imageUrl}}">
+      {{ user.imageUrl }} --}}
+    <br>
+    <br>
+      <label for="email">Update Email address</label><br>
+      <input type="text" class="form-control" name="email" value="{{ user.email }}">
+    <br>
+    <br>
+    <button class="btn btn-block btn-lg btn-primary" type="submit" name="action" value="Submit">Submit</button>
+  </form>
+    <br>
+    <br>
+    <br>
+  <div id="delete">
+    <h5>Delete Profile</h5>
+    <form action="/profile/{{ user.id }}?_method=DELETE" method="post">
+      <button class="btn btn-lg btn-primary" type="submit" name="action" value="Submit">DELETE</button>
+    </form>
+  </div>
+  <br>
 
     {{/equal}}
   </div>

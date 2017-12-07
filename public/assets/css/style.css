@@ -174,7 +174,7 @@ footer.page-footer {
   height: 80px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  border-radius: 50%;
+  border-radius: 50% !important;
   border: 0px solid rgba(0,0,30,0.8);
 }
 
@@ -201,4 +201,19 @@ footer.page-footer {
 
 .mUser-3 {
   padding: 0px !important;
+}
+
+.profile-pic {
+  position: relative;
+  margin-top: 15px;
+  z-index: 100;
+}
+
+.profile-pic img {
+  width: 200px;
+  height: 200px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50% !important;
+  border: 2px solid #eff0f2;
 }

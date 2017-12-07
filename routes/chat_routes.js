@@ -1,10 +1,29 @@
 const User = require('../models/user')
+const Pair = require('../models/pair')
 const Chat = require('../models/chat')
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+
+router.get('/:id', (req, res) => {
   res.render('chat')
+})
+
+router.post('/', (req, res) => {
+  var userOneId = req.body.userOne
+  var userTwoId = req.body.userTwo
+  var newPair = new Pair ({
+    userOneId: userOneId,
+    userTwoId: userTwoId
+  })
+  newPair.save()
+// console.log("NEW PAIR", newPair)
+  .then(() => {
+    res.redirect(`/chat/${newPair._id}`)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 })
 
 module.exports = io => {
