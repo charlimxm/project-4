@@ -3,6 +3,9 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
+  if (!req.user.location) {
+  res.redirect(`/profile/${req.user.username}`)
+} else {
   User.find({
      "username" : { $ne : req.user.username},
       "location": req.user.location,
@@ -18,6 +21,7 @@ router.get('/', (req, res) => {
     .catch(err => {
       console.log(err)
     })
+  }
 })
 
 module.exports = router
