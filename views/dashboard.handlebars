@@ -9,13 +9,16 @@
   <p class="small">
     Want to see more recommended pears? Update your profile Preferred Location!
   </p>
+  <form action="/chat" method="post" type="hidden">
+  <input type="hidden" name="user[id]" value={{user.id}} />
+  </form>
 </div>
 </div>
-
 <div class="col-md-8">
 
 <div class="card-group">
 {{#each matchedUser as |mUser|}}
+
 <div class="col-md-4 mUser-3" >
   <div class="card" >
     <div class="avatar">
@@ -23,6 +26,7 @@
     </div>
     <div class="card-body">
       <h6 class="card-title">{{mUser.username}}</h6>
+      <p>{{@user}}</p>
       <p class="small card-text">Gender: {{mUser.gender}}</p>
       <p class="small card-text">Overall Kyu: {{mUser.overallKyu}}</p>
       <form action="/chat" method="post" id="dashboardButton">
