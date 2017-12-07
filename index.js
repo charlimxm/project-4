@@ -27,6 +27,7 @@ const io = require("socket.io")(http)
 // require all model files
 const User = require('./models/user')
 const Chat = require('./models/chat')
+const Pair = require('./models/chat')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')
@@ -34,6 +35,7 @@ const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
 const chat_routes = require('./routes/chat_routes')
 const dashboard_routes = require('./routes/dashboard_routes')
+const codewars_routes = require('./routes/codewars_routes')
 
 // VIEW ENGINES aka handlebars setup
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
@@ -97,30 +99,21 @@ hbs.registerHelper('equal', function (lvalue, rvalue, options) {
 app.get('/', (req, res) => {
   res.render('home')
 })
+
+app.get('/resources', (req, res) => {
+  res.render('resources')
+})
+
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
 app.use('/dashboard', dashboard_routes)
 app.use('/chat', chat_routes)
-app.post('/search', (req, res) => {
-  const keyword = req.body.keyword
-  const regex = new RegExp(`${keyword}`, 'i')
-  console.log(keyword)
-  console.log('fetched')
-
-  User.find({
-    "languages.lang": regex
-  })
-  .sort({ "languages.kyu": 1 })
-  .then(data => res.send(data))
-  .catch(err => console.log('err')) // in case we have an error
-})
-
-
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
+app.use('/codewars', codewars_routes)
 
 // Socket Connection Routes
 io.on('connection', function(socket){
