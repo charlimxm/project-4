@@ -5,8 +5,9 @@
 <br>
 <form class="col s12 m6" action="/register" method="post" id="registerLabels">
 
-  <label for="name">Codewars Username</label><br>
-  <input type="text" name="user[username]" placeholder="e.g. codewarrior579823" class="form-control"><br>
+  <label for="name validationCustom03">Codewars Username</label><br>
+  <input type="text" id="validationCustom03" name="user[username]" placeholder="e.g. codewarrior579823" class="form-control invalid" required><br>
+  <div class="invalid-feedback">Please provide a valid Codewars username.</div>
 
   <label for="email">Email</label><br>
   <input type="email" name="user[email]" placeholder="e.g. domain@email.com" class="form-control"><br>
