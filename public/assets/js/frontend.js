@@ -104,7 +104,7 @@ $(function () {
     // Click events
     var userPairId = $("#userPairId").val()
     var socket = io('/')
-    socket = io(`/${userPairId ? userPairId : ''}`)
+    // socket = io(`/${userPairId ? userPairId : ''}`)
     console.log('loaded')
     $('#chat').submit(function(){
 

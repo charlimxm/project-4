@@ -45,17 +45,34 @@ router.post('/', (req, res) => {
           codewith: formData.codewith,
         })
         newUser.save()
-          .then(user => {
-            passport.authenticate('local', {
-              successRedirect: `/profile/${user.username}`,
-              failureRedirect: '/register'
-            })(req, res)
-          },
-            err => console.log(err)
-          )
-      },
-        err => console.log('Username' + req.body.user.username + ' does not exist')
-      )
-})
+        .then(user => {
+                  passport.authenticate('local', {
+                    successRedirect: `/profile/${user.username}`,
+                    failureRedirect: '/register'
+                  })(req, res)
+                },
+                  err => console.log(err)
+                )
+            },
+              err => console.log('Username' + req.body.user.username + ' does not exist')
+            )
+      })
+
+
+
+
+
+//
+//         newUser.save()
+//           .then(user => {
+//             passport.authenticate('local', {
+//               successRedirect: `/profile/${user.username}`,
+//               failureRedirect: '/register'
+//             })(req, res)
+//           }),
+//             err => console.log(err)
+//       }).catch(err => res.send(err))
+//         // err => console.error(err)
+// })
 
 module.exports = router
