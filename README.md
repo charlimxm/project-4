@@ -12,7 +12,6 @@ http://glacial-earth-39942.herokuapp.com/
 ..1. has the same Overall Kyu
 .2. has the same preferred location
 .3. has the same preferred langugage
-
 4. At the Dashboard, users can choose to Chat with another user to set their pair programming date!
 
 
