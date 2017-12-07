@@ -101,9 +101,6 @@ app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
 app.use('/dashboard', dashboard_routes)
-// app.get('/', (req, res) => {
-//   res.render('chat')
-// })
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()

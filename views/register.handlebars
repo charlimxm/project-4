@@ -1,37 +1,38 @@
 <div class="container" id="registerForm">
-<div class="icon-profile" id="registerLabels">
-<h2>Registration</h2>
-<br>
-<br>
-<form class="col s12 m6" action="/register" method="post" id="registerLabels">
+  <div class="icon-profile" id="registerLabels">
+    <h2>Registration</h2>
+    <br>
+    <br>
+    <form class="col s12 m6" action="/register" method="post" id="registerLabels">
 
-  <label for="name">Codewars Username</label><br>
-  <input type="text" name="user[username]" placeholder="e.g. codewarrior579823" class="form-control"><br>
+  <label for="name validationCustom03">Codewars Username</label><br>
+  <input type="text" id="validationCustom03" name="user[username]" placeholder="e.g. codewarrior579823" class="form-control invalid" required><br>
+  <div class="invalid-feedback">Please provide a valid Codewars username.</div>
 
-  <label for="email">Email</label><br>
-  <input type="email" name="user[email]" placeholder="e.g. domain@email.com" class="form-control"><br>
+      <label for="email">Email</label><br>
+      <input type="email" name="user[email]" placeholder="e.g. domain@email.com" class="form-control"><br>
 
-  <label for="password">Password</label><br>
-  <input type="password" name="user[password]" placeholder="Enter your password here" class="form-control"><br>
+      <label for="password">Password</label><br>
+      <input type="password" name="user[password]" placeholder="Enter your password here" class="form-control"><br>
 
-  <div class="form-check form-check-inline">
-  <label for="gender">Gender</label><br>
-  <input class="with-gap" type="radio" name="user[gender]" value="male" id="chooseGender1" />
-  <label for="chooseGender1">Male</label>
-  <input class="with-gap" type="radio" name="user[gender]" value="female" id="chooseGender2" />
-  <label for="chooseGender2">Female</label>
+      <div class="form-check form-check-inline">
+        <label for="gender">Gender</label><br>
+        <input class="with-gap" type="radio" name="user[gender]" value="male" id="chooseGender1" />
+        <label for="chooseGender1">Male</label>
+        <input class="with-gap" type="radio" name="user[gender]" value="female" id="chooseGender2" />
+        <label for="chooseGender2">Female</label>
+      </div>
+      <br>
+      <label for="image">Profile Photo:</label><br>
+      <input type="hidden" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" /><br>
+
+      <input type="hidden" name="user[about]" value="Add a short introduction of yourself here" class="black-text" />
+      <input type="hidden" name="user[codewith]" value="State your available days & timings" class="black-text" />
+
+      <br>
+      <br>
+      <button class="btn btn-block btn-lg btn-primary" type="submit" name="action" value="Submit">Submit</button>
+
+    </form>
   </div>
-  <br>
-  <label for="image">Profile Photo:</label><br>
-  <input type="hidden" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" /><br>
-
-  <input type="hidden" name="user[about]" value="Add a short introduction of yourself here" class="black-text" />
-  <input type="hidden" name="user[codewith]" value="State your available days & timings" class="black-text" />
-
-  <br>
-  <br>
-  <button class="btn btn-block btn-lg btn-primary" type="submit" name="action" value="Submit">Submit</button>
-
-</form>
-</div>
 </div>
