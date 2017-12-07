@@ -14,3 +14,15 @@ http://glacial-earth-39942.herokuapp.com/
 .3. has the same preferred langugage
 
 4. At the Dashboard, users can choose to Chat with another user to set their pair programming date!
+
+
+## Built with
+.Node.js
+.Express.js
+.MongoDB
+.Bootstrap (& FlatUI)
+.Codewars API
+
+
+### Acknowledgements to
+.freepik - @iconicbestiary
