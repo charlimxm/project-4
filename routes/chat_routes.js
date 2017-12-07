@@ -8,17 +8,16 @@ const ObjectId = require('mongoose').Types.ObjectId
 
 
 router.get('/:id', (req, res) => {
-
   const io = req.socket
+
   io.on('connection', function(socket) {
     socket.join(`/${req.params.id}`)
     console.log('room join to : ', req.params.id)
+    console.log(req.params.id)
   })
-
-
   // retrieve history
   // find the pair based on :id
-  return res.send(req.user.id)
+  // return res.send(req.params.id)
   Pair.find({
     $or: [
       { 'userOneId': new ObjectId(req.params.id) },
@@ -28,11 +27,9 @@ router.get('/:id', (req, res) => {
     .then((pair) => {
       // the history array
       const chat = pair.chatMessages
-      // console.log(pair)
       res.render('chat', {chat,
-                          pairId: req.params.id})
+                  pairId: req.params.id})
     })
-
 })
 
 router.post('/', (req, res) => {
@@ -40,7 +37,9 @@ router.post('/', (req, res) => {
   var userTwoId = req.body.userTwo
   // check the existence the pair
   Pair.find({
-    "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
+    $and: [{"userOneId": userOneId || userTwoId},
+           {"userTwoId": userTwoId || userOneId}
+         ]
   })
     .then((chatroomList) => {
       // if not(no chatroom), create new pair and save.
@@ -55,8 +54,12 @@ router.post('/', (req, res) => {
           .then(() => {
             // if the saving is success
             // find the saved pair(chatroom)
+
             Pair.find({
-              "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
+              // "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
+              $and: [{"userOneId": userOneId || userTwoId},
+                     {"userTwoId": userTwoId || userOneId}
+                   ]
             })
             .then((chatroomList) => res.redirect(`/chat/${chatroomList[0]._id}`))
           })
