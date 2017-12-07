@@ -4,10 +4,10 @@ const router = express.Router()
 
 
 router.get('/', (req, res) => {
-  if (!req.user.location || !req.user.preferredLanguage) {
-    // var errorMsg = "please specify preferred location and language to go to dashboard"
-  res.redirect('/')
-} else {
+//   if (!req.user.location || !req.user.preferredLanguage) {
+//     // var errorMsg = "please specify preferred location and language to go to dashboard"
+//   res.redirect('/')
+// } else {
   User.find({
      "username" : { $ne : req.user.username},
       "location": req.user.location,
@@ -23,7 +23,6 @@ router.get('/', (req, res) => {
     .catch(err => {
       console.log(err)
     })
-  }
 })
 
 
