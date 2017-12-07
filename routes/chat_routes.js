@@ -2,25 +2,30 @@ const User = require('../models/user')
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.render('chat')
-  // var user = req.user
-  // res.render('chat')
-})
+// Socket events
+module.exports = io => {
+  // io.on('connection', function(socket){
+  //   // console.log('a user connected')
+  //   socket.on('broadcast chat', (msg) => {
+  //     io.emit("chat message", msg)
+  //   })
+  // })
+}
 
-// router.put('/:id', (req, res) => {
-//   var formData = req.body
-//   User.findByIdAndUpdate(req.params.id, {
-//     email: formData.email
-//   })
-//   .then(() => res.redirect(`/profile`))
-//   .catch(err => console.log(err))
+// let nsp = io.of(`/${msg.pairId}`)
+// nsp.emit("chat message", {
+//   user: msg.user,
+//   message: msg.message
 // })
 //
-// router.delete('/:id', (req, res) => {
-//   User.findByIdAndRemove(req.params.id)
-//   .then(() => res.redirect(`/`))
-//   .catch(err => console.log(err))
+// //save to mongoose
+// let newChat = new Chat({
+//   author: msg.user,
+//   comment: msg.message,
+//   pairId: msg.pairId,
+//   date: Date.now()
 // })
-
-module.exports = router
+// newChat.save()
+// })
+// })
+// }

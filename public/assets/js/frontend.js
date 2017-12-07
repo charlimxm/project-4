@@ -67,18 +67,6 @@ $(function () {
     $userResult.append(allUsers)
   }
 
-  var socket = io('/')
-  $('#chat').submit(function(){
-    socket.emit('broadcast chat', $('#m').val())
-    $('#m').val('')
-    return false
-  })
-  socket.on('chat message', function(msg){
-    console.log(msg)
-    $('#message').append($('<li>').text(msg))
-    window.scrollTo(0, document.body.scrollHeight)
-  })
-
   const $deleteForm = $('.deleteForm')
 
   $deleteForm.on('submit', function (e) {
@@ -107,4 +95,47 @@ $(function () {
       form.parents('.col-4').remove()
     })
   })
+
+
+    var socket = io('/')
+
+
+    // Click events
+
+    $('#chat').submit(function(){
+      socket.emit('chat message', {
+        user: $("#userName").val(),
+        comment: $('#m').val()
+      })
+      $('#m').val('')
+      return false
+    })
+
+    // Socket events
+
+    socket.on('chat message', function(msg) {
+      // $('#message').append($('<li>').text(msg))
+      // let $messageString = `<li class='flow-text chatMessage'><b>${msg.user}:</b></li>`
+
+      $("#message").append(
+        $(
+          `<li class='flow-text chatMessage'><strong>${msg.user}:</strong> ${msg.comment}</li>`
+        )
+      )
+      window.scrollTo(0, document.body.scrollHeight)
+    })
+
+    // Whenever the server emits 'user joined', log it in the chat body
+    socket.on('user joined', function (data) {
+      log(data.username + ' joined')
+      addParticipantsMessage(data)
+    });
+
+    // Whenever the server emits 'user left', log it in the chat body
+    socket.on('user left', function (data) {
+      log(data.username + ' left');
+      addParticipantsMessage(data);
+      removeChatTyping(data);
+    })
+
 })

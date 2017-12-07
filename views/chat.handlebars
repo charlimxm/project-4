@@ -1,4 +1,30 @@
-<ul id="message"></ul>
-<form id="chat" action="">
-  <input id="m" autocomplete="off" /><button>Send</button>
-</form>
+<ul class="pages">
+  <p class="chat page">
+    <div class="chatArea">
+      <ul id="message"></ul>
+    </div>
+    <ul id="message"></ul>
+    <form id="chat" action="">
+      <input type="hidden" id="userName" value="{{user.username}}">
+      <input id="m" autocomplete="off" /><button>Enter</button>
+    </form>
+  </p>
+</ul>
+
+{{!-- <div class="col s3"> <!-- Chat and new task -->
+   <h5>Chat</h5>
+   <div class="chatWrapper">
+     <div class="chat">
+       <ul id="message">
+         {{#each messages as |message|}}
+         <li class="flow-text chatMessage"><strong>{{message.author}}:</strong> {{message.content}}</li>
+         {{/each}}
+       </ul>
+       <form id="message">
+         <input type="hidden" id="userName" value="{{user.name}}">
+         <input type="hidden" id="userPair" value="{{user.pair}}">
+         <input type="hidden" id="userPairId" value="{{user.pairId}}">
+         <input id="m" placeholder="Message (press enter to send)" autocomplete="off" type="text">
+       </form>
+     </div>
+   </div> --}}
