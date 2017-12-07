@@ -25,7 +25,6 @@ router.put('/:id', (req, res) => {
           }
           arr.push(langs)
         }
-        console.log(obj.honor)
         User.findByIdAndUpdate(req.user.id, {
             honor: obj.honor,
             leaderboardPosition: obj.leaderboardPosition,
