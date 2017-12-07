@@ -24,10 +24,10 @@ const userSchema = new Schema({
   about: String,
   codewith: String,
   preferredLanguage: String,
-  pairId: {
+  pairId: [{
      type: Schema.Types.ObjectId,
      ref: 'Pair'
-   }
+   }]
   // chatRef: [{
   //   userId: {
   //     type: Schema.Types.ObjectId,

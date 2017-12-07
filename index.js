@@ -78,6 +78,7 @@ app.use(passport.session())
 app.use((req, res, next) => {
   app.locals.user = req.user
   app.locals.chat = req.chat
+  req.socket = io
   next()
 })
 
@@ -105,14 +106,6 @@ app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
-})
-
-// Socket Connection Routes
-io.on('connection', function(socket){
-  // console.log('a user connected')
-  socket.on('chat message', (msg) => {
-    io.emit("chat message", msg)
-  })
 })
 
 http.listen(port, () => {
