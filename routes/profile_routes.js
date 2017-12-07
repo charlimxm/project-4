@@ -24,8 +24,7 @@ router.put('/:id', (req, res) => {
     about: formData.about,
     codewith: formData.codewith,
     location: formData.location,
-    preferredLanguage: formData.preferredLanguage,
-    imageUrl: formData.imageUrl
+    preferredLanguage: formData.preferredLanguage
   })
   .then(() => res.redirect(`/profile/${req.body.slug}`))
   .catch(err => console.log(err))

@@ -1,8 +1,10 @@
 <div class="container">
 <div class ="icon-profile">
   <div class ="container">
-    <div class="row">
-      <img src = "{{ person.imageUrl }}" class="img-thumbnail" max-height="200px">
+    <div class="row d-flex justify-content-center">
+      <div class="profile-pic ">
+      <img src = "{{ person.imageUrl }}" >
+    </div>
     </div>
     <br>
     <div class="row">
@@ -94,9 +96,9 @@
       <input type="text" class="form-control" rows="3" cols="80" name="codewith" value="{{ user.codewith }}">
       <small id="emailHelp" class="form-text text-muted">Let people know more about your available time, days and exact location.</small>
     <br>
-      <label for="image">Change Profile Photo:</label><br>
+      {{!-- <label for="image">Change Profile Photo:</label><br>
       <input type="text" role="uploadcare-uploader" name="user[imageUrl]" data-images-only="true" value="{{user.imageUrl}}">
-      {{ user.imageUrl }}
+      {{ user.imageUrl }} --}}
     <br>
     <br>
       <label for="email">Update Email address</label><br>
