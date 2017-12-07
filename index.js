@@ -13,6 +13,7 @@ const path = require('path') // for Public files
 const passport = require('./config/ppConfig') // to register passport strategies
 const session = require('express-session') // to create session and cookies
 const MongoStore = require('connect-mongo')(session) // to store session into db
+
 // initiating express
 const app = express()
 
@@ -24,23 +25,14 @@ const io = require("socket.io")(http)
 
 // require all model files
 const User = require('./models/user')
-const Booking = require('./models/booking')
 const Chat = require('./models/chat')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')
 const login_routes = require('./routes/login_routes')
 const profile_routes = require('./routes/profile_routes')
-// const pending_routes = require('./routes/pending_routes')
 const chat_routes = require('./routes/chat_routes')
-
-// const chat_routes = require('./routes/chat_routes')
-
 const dashboard_routes = require('./routes/dashboard_routes')
-
-// initiating express
-// const app = express()
-
 
 // VIEW ENGINES aka handlebars setup
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
@@ -84,6 +76,7 @@ app.use(passport.session())
 
 app.use((req, res, next) => {
   app.locals.user = req.user
+  app.locals.chat = req.chat
   next()
 })
 
@@ -100,12 +93,6 @@ hbs.registerHelper('equal', function (lvalue, rvalue, options) {
   }
 })
 
-
-app.get('/recommendation', (req, res) => {
-  res.render('recommendation')
-})
-
-
 app.get('/', (req, res) => {
   res.render('home')
 })
@@ -113,7 +100,7 @@ app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
 app.use('/dashboard', dashboard_routes)
-
+app.use('/chat', chat_routes)
 app.post('/search', (req, res) => {
   const keyword = req.body.keyword
   const regex = new RegExp(`${keyword}`, 'i')
@@ -129,25 +116,18 @@ app.post('/search', (req, res) => {
 })
 
 
-// app.use('/pending', pending_routes)
-app.use('/chat', chat_routes)
-
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
 
-app.use('/chat', chat_routes)
 // Socket Connection Routes
-
 io.on('connection', function(socket){
   // console.log('a user connected')
-
-
-    socket.on('broadcast chat', (msg) => {
-      io.emit("chat message", msg)
-    })
-});
+  socket.on('chat message', (msg) => {
+    io.emit("chat message", msg)
+  })
+})
 
 http.listen(port, () => {
   console.log(`Server is running on ${port}`)
