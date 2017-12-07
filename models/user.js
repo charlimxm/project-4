@@ -26,27 +26,17 @@ const userSchema = new Schema({
   preferredLanguage: String,
   languages: Object,
   preferredLanguage: String,
-    // will store ids here
-  /*
-    {
-      'dfskjhgskldfghlksd': true
+  location: String,
+  chatRef: [{
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    chatRoomId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Chat'
     }
-    user.rejected[id that you found]
-  */
-  /*
-  pending: Array,
-  invited: Array,
-  accepted: Array,
-  */
-  /*
-  connecting: Array
-    // [{
-    id: aishdklahskd,
-    name: Alex,
-    status: pending
   }]
-  */
-  location: String
 })
 
 userSchema.pre('save', function (next) {
