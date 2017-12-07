@@ -13,10 +13,31 @@
 <p>{{user.overallKyu}}</p> --}}
 
 {{#each matchedUser as |mUser|}}
-<img src="{{mUser.imageUrl}}" alt="" />
 
-<p>{{mUser.username}}</p>
-<p>{{#each mUser.languages}}
+<div class="col-md-4">
+  <div class="card card-profile">
+    <div class="card-avatar">
+      <img class="img" src="{{user.imageUrl}}" />
+    </div>
+
+    <div class="table">
+      <h6 class="card-caption">{{mUser.username}}</h6>
+      <p>{{#each mUser.languages}}
+      {{lang}} {{kyu}} kyu</p>
+      {{/each}}
+      <p>{{mUser.gender}}</p>
+      <p>{{mUser.about}}</p>
+      <p>{{mUser.overallKyu}}</p>
+      <p>{{mUser.location}}</p>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+
+{{!-- <p>{{mUser.username}}</p> --}}
+{{!-- <img class="img" src="{{mUser.imageUrl}}" /> --}}
+{{!-- <p>{{#each mUser.languages}}
 {{lang}} {{kyu}} kyu</p>
 {{/each}}
 <p>{{mUser.gender}}</p>
@@ -27,11 +48,16 @@
 
 </div>
 
+<div class="col-md-4">
+  <div class="card card-profile">
+    <div class="card-avatar">
 
-<h3>Search Results</h3>
+    </div>
+  </div>
+</div> --}}
+
+
+{{!-- <h3>Search Results</h3>
 
 <div class="userResult">
-
-
-
-</div>
+</div> --}}
