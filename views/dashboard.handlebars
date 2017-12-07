@@ -1,36 +1,36 @@
-<div class = "container">
-  <div class= "row">
+<div class="container">
+  <div class="row">
     <div class="col-md-3">
-<div class="card">
-  {{!-- <p>When redirected to this page, the user can see a bunch of people that are from the same Location, Same Kyu and Language Preferred</p> --}}
-  <h4>Current User</h4>
-  <p>{{user.username}} {{user.overallKyu}} {{user.location}}</p>
-  {{!-- <p>{{user.overallKyu}}</p>
+      <div class="card">
+        {{!-- <p>When redirected to this page, the user can see a bunch of people that are from the same Location, Same Kyu and Language Preferred</p> --}}
+        <h4>Current User</h4>
+        <p>{{user.username}} {{user.overallKyu}} {{user.location}}</p>
+        {{!-- <p>{{user.overallKyu}}</p>
   <p>{{user.location}}</p> --}}
-  <p>
-    Want to see more recommended pears? Update your profile Preferred Location!
-  </p>
-</div>
-</div>
-
-{{#each matchedUser as |mUser|}}
-
-<div class="col-md-3">
-  <div class="card" style="width: 20rem;">
-    <div class="avatar">
-    <img class="card-img-top" src="/assets/img/dayah.jpg" alt="Card image cap">
+        <p>
+          Want to see more recommended pears? Update your profile Preferred Location!
+        </p>
+      </div>
     </div>
-    <div class="card-body">
-      <h4 class="card-title">{{mUser.username}}</h4>
-      <p class="card-text">Gender: {{mUser.gender}}</p>
-      <p class="card-text">Overall Kyu: {{mUser.overallKyu}}</p>
-      <a href="#" class="btn btn-primary">Chat!</a>
-      <a href="/profile/{{mUser.username}}" class="btn btn-primary">See Profile</a>
-    </div>
+
+    {{#each matchedUser as |mUser|}}
+
+      <div class="col-md-3">
+        <div class="card" style="width: 20rem;">
+          <div class="avatar">
+            <img class="card-img-top" src="/assets/img/dayah.jpg" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{mUser.username}}</h4>
+            <p class="card-text">Gender: {{mUser.gender}}</p>
+            <p class="card-text">Overall Kyu: {{mUser.overallKyu}}</p>
+            <a href="#" class="btn btn-primary">Chat!</a>{{!--  --}}
+            <a href="/profile/{{mUser.username}}" class="btn btn-primary">See Profile</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
   </div>
-</div>
-{{/each}}
-</div>
 
 
 

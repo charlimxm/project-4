@@ -100,9 +100,7 @@ app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
 app.use('/dashboard', dashboard_routes)
-app.get('/chat', (req, res) => {
-  res.render('chat')
-})
+app.use('/chat', chat_routes)
 app.post('/search', (req, res) => {
   const keyword = req.body.keyword
   const regex = new RegExp(`${keyword}`, 'i')
@@ -117,7 +115,7 @@ app.post('/search', (req, res) => {
   .catch(err => console.log('err')) // in case we have an error
 })
 
-app.use('/chat', chat_routes)
+
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')

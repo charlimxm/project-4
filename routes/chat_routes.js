@@ -2,17 +2,22 @@ const User = require('../models/user')
 const express = require('express')
 const router = express.Router()
 
+
+router.get("/", (req, res) => {
+  res.render('chat')
+})
+
 // Socket events
-module.exports = io => {
+// module.exports = io => {
   // io.on('connection', function(socket){
   //   // console.log('a user connected')
   //   socket.on('broadcast chat', (msg) => {
   //     io.emit("chat message", msg)
   //   })
   // })
-}
+// }
 
-// let nsp = io.of(`/${msg.pairId}`)
+// let nsp = io.of(`/${msg.chatId}`)
 // nsp.emit("chat message", {
 //   user: msg.user,
 //   message: msg.message
@@ -29,3 +34,4 @@ module.exports = io => {
 // })
 // })
 // }
+module.exports = router
