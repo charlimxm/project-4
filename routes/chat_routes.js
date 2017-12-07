@@ -18,20 +18,21 @@ router.get('/:id', (req, res) => {
 
   // retrieve history
   // find the pair based on :id
-  return res.send(req.user.id)
+  // return res.send(req.user.id)
   Pair.find({
     $or: [
-      { 'userOneId': new ObjectId(req.params.id) },
-      { 'userTwoId': new ObjectId(req.params.id) }
+      { 'userOneId': ObjectId(req.params.id) },
+      { 'userTwoId': ObjectId(req.params.id) }
     ]
+  }).then((pair) => {
+    // the history array
+    // console.log(pair)
+    const chat = pair.chatMessages
+    // console.log(chat)
+    res.render('chat', {chat,
+                        pairId: req.params.id})
   })
-    .then((pair) => {
-      // the history array
-      const chat = pair.chatMessages
-      // console.log(pair)
-      res.render('chat', {chat,
-                          pairId: req.params.id})
-    })
+
 
 })
 
@@ -40,7 +41,10 @@ router.post('/', (req, res) => {
   var userTwoId = req.body.userTwo
   // check the existence the pair
   Pair.find({
-    "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
+    $or: [
+      { 'userOneId': new ObjectId(req.params.id) },
+      { 'userTwoId': new ObjectId(req.params.id) }
+    ]
   })
     .then((chatroomList) => {
       // if not(no chatroom), create new pair and save.
@@ -56,7 +60,10 @@ router.post('/', (req, res) => {
             // if the saving is success
             // find the saved pair(chatroom)
             Pair.find({
-              "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
+              $or: [
+                { 'userOneId': new ObjectId(req.params.id) },
+                { 'userTwoId': new ObjectId(req.params.id) }
+              ]
             })
             .then((chatroomList) => res.redirect(`/chat/${chatroomList[0]._id}`))
           })
