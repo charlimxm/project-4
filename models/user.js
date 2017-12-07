@@ -13,9 +13,18 @@ const userSchema = new Schema({
     type: String,
     unique: true
   },
-  password: String,
-  gender: String,
-  imageUrl: String,
+  password: {
+    type: String,
+    required: true
+  },
+  gender: {
+    type: String,
+    required: true
+  },
+  imageUrl: {
+    type: String,
+    required: true
+  },
   honor: Number,
   leaderboardPosition: Number,
   languages: Object,

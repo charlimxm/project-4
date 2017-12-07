@@ -26,7 +26,9 @@ router.post('/', (req, res) => {
   })
 })
 
-
+router.put('/', (req, res) => {
+  
+})
 
 // Socket events
 // module.exports = io => {
