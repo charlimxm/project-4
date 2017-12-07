@@ -99,6 +99,11 @@ hbs.registerHelper('equal', function (lvalue, rvalue, options) {
 app.get('/', (req, res) => {
   res.render('home')
 })
+
+app.get('/resources', (req, res) => {
+  res.render('resources')
+})
+
 app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
