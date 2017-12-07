@@ -16,9 +16,7 @@
 
 <div class="card-group">
 {{#each matchedUser as |mUser|}}
-
 <div class="col-md-4 mUser-3" >
-
   <div class="card" >
     <div class="avatar">
     <img class="card-img-top" src="/assets/img/dayah.jpg" alt="Card image cap">
@@ -27,7 +25,10 @@
       <h6 class="card-title">{{mUser.username}}</h6>
       <p class="small card-text">Gender: {{mUser.gender}}</p>
       <p class="small card-text">Overall Kyu: {{mUser.overallKyu}}</p>
-      <a href="#" class="btn btn-primary">Chat!</a>
+      <form action="/chat" method="post" id="dashboardButton">
+      <button class="btn btn-primary"type="submit" name="action" value="{{mUser.id}}">Chat!</button>
+    </form>
+    <br>
       <a href="/profile/{{mUser.username}}" class="btn btn-primary">See Profile</a>
     </div>
   </div>
@@ -38,7 +39,7 @@
 
 
 <div class="col">
-    
+
   </div>
 
 

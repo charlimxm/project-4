@@ -17,66 +17,65 @@
             {{/each}}
           </div>
         </div>
-      </div>
-      <div class="col-sm">
-        <div class="tile">
-          <h3 class="tile-title">
+        <div class="col-sm">
+          <div class="tile">
+            <h3 class="tile-title">
             {{person.username}}
           </h3>
             <p>Codewars Rank</p>
             <p>Honor : {{ person.honor }}</p>
             <p>Overall Kyu : {{ person.overallKyu }}</p>
             <p>Leaderboard Position : {{ person.leaderboardPosition }}</p>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="tile">
+            <h5>{{person.location}} Area</h5>
+          </div>
+          <div class="tile">
+            <h5>{{person.preferredLanguage}}</h5>
+          </div>
         </div>
       </div>
-      <div class="col-sm">
-        <div class="tile">
-          <h5>{{person.location}} Area</h5>
-        </div>
-        <div class="tile">
-          <h5>{{person.preferredLanguage}}</h5>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm">
-        <div class="tile">
-          <h3 class="tile-title">
+      <div class="row">
+        <div class="col-sm">
+          <div class="tile">
+            <h3 class="tile-title">
             My Story :
           </h3>
-          <div class="container ">
-            <p>{{ person.about }}</p>
+            <div class="container ">
+              <p>{{ person.about }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm">
-        <div class="tile">
-          <h3 class="tile-title">
+        <div class="col-sm">
+          <div class="tile">
+            <h3 class="tile-title">
             Code with me :
           </h3>
-          <div class="container ">
-            <p>{{ person.codewith }}</p>
+            <div class="container ">
+              <p>{{ person.codewith }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-{{#equal user.username person.username}}
+    {{#equal user.username person.username}}
 
-  <form action="/profile/{{ user.id }}?_method=PUT" method="post" id="profile">
-    <div class="form-group" >
-      <label for="exampleFormControlSelect1">Select Language</label>
-      <select class="form-control" type="text" name="preferredLanguage" value="{{ user.preferredLanguage }}" id="exampleFormControlSelect1">
+      <form action="/profile/{{ user.id }}?_method=PUT" method="post" id="profile">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Language</label>
+          <select class="form-control" type="text" name="preferredLanguage" value="{{ user.preferredLanguage }}" id="exampleFormControlSelect1">
         {{#each user.languages}}
         <option>{{lang}}</option>
         {{/each}}
       </select>
-    </div>
-    <div class="form-group" >
-      <label for="exampleFormControlSelect1">Select Area</label>
-      <select class="form-control" type="text" name="location" value="{{ user.location }}" id="exampleFormControlSelect1">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Area</label>
+          <select class="form-control" type="text" name="location" value="{{ user.location }}" id="exampleFormControlSelect1">
       <option>Central</option>
       <option>North</option>
       <option>South</option>
@@ -118,7 +117,7 @@
   </div>
   <br>
 
-  {{/equal}}
-</div>
+    {{/equal}}
+  </div>
 </div>
 </div>
