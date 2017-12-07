@@ -26,6 +26,7 @@ const io = require("socket.io")(http)
 // require all model files
 const User = require('./models/user')
 const Chat = require('./models/chat')
+const Pair = require('./models/chat')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')
@@ -100,23 +101,9 @@ app.use('/register', register_routes)
 app.use('/profile', profile_routes)
 app.use('/login', login_routes)
 app.use('/dashboard', dashboard_routes)
-app.get('/chat', (req, res) => {
-  res.render('chat')
-})
-app.post('/search', (req, res) => {
-  const keyword = req.body.keyword
-  const regex = new RegExp(`${keyword}`, 'i')
-  console.log(keyword)
-  console.log('fetched')
-
-  User.find({
-    "languages.lang": regex
-  })
-  .sort({ "languages.kyu": 1 })
-  .then(data => res.send(data))
-  .catch(err => console.log('err')) // in case we have an error
-})
-
+// app.get('/', (req, res) => {
+//   res.render('chat')
+// })
 app.use('/chat', chat_routes)
 app.get('/logout', (req, res) => {
   req.logout()

@@ -98,14 +98,16 @@ $(function () {
 
 
     var socket = io('/')
-
+    var userPairId = $("#userPairId").val()
+    let nsp = io(`/${userPairId}`)
 
     // Click events
 
     $('#chat').submit(function(){
       socket.emit('chat message', {
         user: $("#userName").val(),
-        comment: $('#m').val()
+        comment: $('#m').val(),
+        chatroom: $("#userPairId").val()
       })
       $('#m').val('')
       return false
@@ -113,14 +115,9 @@ $(function () {
 
     // Socket events
 
-    socket.on('chat message', function(msg) {
-      // $('#message').append($('<li>').text(msg))
-      // let $messageString = `<li class='flow-text chatMessage'><b>${msg.user}:</b></li>`
-
+    nsp.on('chat message', function(msg) {
       $("#message").append(
-        $(
-          `<li class='flow-text chatMessage'><strong>${msg.user}:</strong> ${msg.comment}</li>`
-        )
+        $(`<li class='flow-text chatMessage'>${msg.user}: ${msg.comment}</li>`)
       )
       window.scrollTo(0, document.body.scrollHeight)
     })

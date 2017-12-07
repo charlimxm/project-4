@@ -24,19 +24,20 @@ const userSchema = new Schema({
   about: String,
   codewith: String,
   preferredLanguage: String,
-  languages: Object,
-  preferredLanguage: String,
-  location: String,
-  chatRef: [{
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    },
-    chatRoomId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Chat'
-    }
-  }]
+  pairId: {
+     type: Schema.Types.ObjectId,
+     ref: 'Pair'
+   }
+  // chatRef: [{
+  //   userId: {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'User'
+  //   },
+  //   chatRoomId: {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Chat'
+  //   }
+  // }]
 })
 
 userSchema.pre('save', function (next) {

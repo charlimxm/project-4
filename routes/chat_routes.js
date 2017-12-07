@@ -1,31 +1,30 @@
 const User = require('../models/user')
+const Chat = require('../models/chat')
 const express = require('express')
 const router = express.Router()
 
-// Socket events
+router.get('/', (req, res) => {
+  res.render('chat')
+})
+
 module.exports = io => {
-  // io.on('connection', function(socket){
-  //   // console.log('a user connected')
-  //   socket.on('broadcast chat', (msg) => {
-  //     io.emit("chat message", msg)
-  //   })
-  // })
+  io.on("connection", function(socket) {
+    socket.on("chat message", msg => {
+      let nsp = io.of(`/${msg.pairId}`)
+      nsp.emit("chat message", {
+        user: msg.user,
+        message: msg.message
+      })
+
+      let newChat = new Chat({
+        user: msg.user,
+        comment: msg.message,
+        date: Date.now(),
+        chatroom: msg.pairId
+      })
+      newChat.save()
+    })
+  })
 }
 
-// let nsp = io.of(`/${msg.pairId}`)
-// nsp.emit("chat message", {
-//   user: msg.user,
-//   message: msg.message
-// })
-//
-// //save to mongoose
-// let newChat = new Chat({
-//   author: msg.user,
-//   comment: msg.message,
-//   pairId: msg.pairId,
-//   date: Date.now()
-// })
-// newChat.save()
-// })
-// })
-// }
+module.exports = router
