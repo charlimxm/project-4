@@ -17,11 +17,11 @@ const MongoStore = require('connect-mongo')(session) // to store session into db
 // initiating express
 const app = express()
 
-//socket.io
+// socket.io
 // supply express to http server express
-const http = require("http").Server(app) //what is this?
+const http = require('http').Server(app) // what is this?
  // listening on http
-const io = require("socket.io")(http)
+const io = require('socket.io')(http)
 
 // require all model files
 const User = require('./models/user')

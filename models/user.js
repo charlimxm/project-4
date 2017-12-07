@@ -21,12 +21,12 @@ const userSchema = new Schema({
     type: String
   },
   imageUrl: {
-    type: String,
+    type: String
   },
   honor: Number,
   leaderboardPosition: Number,
-  languages: Object,
   overallKyu: String,
+  languages: Object,
   location: String,
   about: String,
   codewith: String,
@@ -35,16 +35,6 @@ const userSchema = new Schema({
      type: Schema.Types.ObjectId,
      ref: 'Pair'
    }]
-  // chatRef: [{
-  //   userId: {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'User'
-  //   },
-  //   chatRoomId: {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Chat'
-  //   }
-  // }]
 })
 
 userSchema.pre('save', function (next) {

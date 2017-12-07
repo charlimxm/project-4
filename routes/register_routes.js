@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
         for (x in languages) {
           var langs = {
             lang: x,
-            kyu: languages[x].name.replace(' kyu','')
+            kyu: languages[x].name.replace(' kyu', '')
           }
           arr.push(langs)
         }
@@ -42,25 +42,21 @@ router.post('/', (req, res) => {
           languages: arr,
           overallKyu: obj.ranks.overall.name,
           about: formData.about,
-          codewith: formData.codewith,
+          codewith: formData.codewith
         })
         newUser.save()
         .then(user => {
-                  passport.authenticate('local', {
-                    successRedirect: `/profile/${user.username}`,
-                    failureRedirect: '/register'
-                  })(req, res)
-                },
+          passport.authenticate('local', {
+            successRedirect: `/profile/${user.username}`,
+            failureRedirect: '/register'
+          })(req, res)
+        },
                   err => console.log(err)
                 )
-            },
+      },
               err => console.log('Username' + req.body.user.username + ' does not exist')
             )
-      })
-
-
-
-
+})
 
 //
 //         newUser.save()

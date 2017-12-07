@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-3">
       <div class="card">
-        <h6>Current User</h6>
-        <p class="small">{{user.username}} {{user.overallKyu}} {{user.location}}</p>
-        <p class="small">{{user.overallKyu}}</p>
-        <p class="small">{{user.location}}</p>
+        <h6>Your Profile</h6><br>
+        <div class="avatar">
+          <img class="card-img-top" src="{{mUser.imageUrl}}" alt="User Profile Image">
+        </div>
+        <h7><strong>{{user.username}}</strong></h7><br>
+        <p class="small"><strong>Overall Kyu:</strong> {{user.overallKyu}}</p>
+        <p class="small"><strong>Preferred Location:</strong> {{user.location}}</p>
+        <p class="small"><strong>Preferred Language:</strong> {{user.preferredLanguage}}</p>
+        <br>
         <p class="small">
-          Want to see more recommended pears? Update your profile Preferred Location!
+          Want to see more recommended pears? <br> Update your profile with your Preferred Location and Language!
         </p>
 
       </div>
@@ -21,7 +26,7 @@
           <div class="col-md-4 mUser-3">
             <div class="card">
               <div class="avatar">
-                <img class="card-img-top" src="{{mUser.imageUrl}}" alt="Card image cap">
+                <img class="card-img-top" src="{{mUser.imageUrl}}" alt="User Profile Image">
               </div>
               <div class="card-body">
                 <h6 class="card-title">{{mUser.username}}</h6>

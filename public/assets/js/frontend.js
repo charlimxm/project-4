@@ -1,33 +1,31 @@
 $(function () {
   const $searchInput = $('#searchInput')
-  const $userResult = $(".userResult")
-
+  const $userResult = $('.userResult')
 
   $searchInput.on('keyup', e => { // e is the event object of the keyup event
     var keyword = e.target.value
-    if(keyword.length > 0) {
-    var json = JSON.stringify({
-      keyword
-    })
+    if (keyword.length > 0) {
+      var json = JSON.stringify({
+        keyword
+      })
 
-    fetch('/search', {
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: json
-    })
+      fetch('/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: json
+      })
     .then(response => response.json())
     .then(data => showResults(data))
-    .catch(err=> console.log(err))
-  }
+    .catch(err => console.log(err))
+    }
   })
 
-  function showResults(data){
+  function showResults (data) {
     let allUsers = data.map(user => {
-
-      const $newUsername = $("<h5>").text(user.username)
-      const $newHonor = $("<h5>").text(user.honor)
+      const $newUsername = $('<h5>').text(user.username)
+      const $newHonor = $('<h5>').text(user.honor)
 
       $newUsername.append($newHonor)
       return $newUsername
@@ -53,15 +51,13 @@ $(function () {
 
       $newCardTitle.text(user.username)
       $newAvatar.append('<img src="{{user.imageUrl}}" />')
-        $newCardBody.append(bodyText)
+      $newCardBody.append(bodyText)
 
       $newCardBody.append($newAvatar, $newCardTitle, $newCardBody)
 
       $newCard.append($newCardBody)
       $newCol.append($newCard)
       return $newCol
-
-
     })
     $userResult.html('')
     $userResult.append(allUsers)
@@ -96,47 +92,40 @@ $(function () {
     })
   })
 
-
-
-
-
     // Socket events
     // Click events
-    var userPairId = $("#userPairId").val()
-    var socket = io('/')
+  var userPairId = $('#userPairId').val()
+  var socket = io('/')
     // socket = io(`/${userPairId ? userPairId : ''}`)
-    console.log('loaded')
-    $('#chat').submit(function(){
-
-      socket.emit('chat message', {
-        user: $("#userName").val(),
-        comment: $('#m').val(),
-        chatroom: $("#userPairId").val()
-      })
-      $('#m').val('')
-
-      return false
+  console.log('loaded')
+  $('#chat').submit(function () {
+    socket.emit('chat message', {
+      user: $('#userName').val(),
+      comment: $('#m').val(),
+      chatroom: $('#userPairId').val()
     })
+    $('#m').val('')
+    return false
+  })
 
-    socket.on("chat broadcast", function(msg) {
-      console.log('chaT!!!!!')
-      $("#message").append(
-        $(`<li class='flow-text chatMessage'>${msg.user}: ${msg.comment}</li>`)
+  socket.on('chat broadcast', function (msg) {
+    console.log('chaT!!!!!')
+    $('#message').append(
+        $(`<li class='flow-text chatMessage'><strong>${msg.user}:</strong> ${msg.comment}</li>`)
       )
-      window.scrollTo(0, document.body.scrollHeight)
-    })
+    window.scrollTo(0, document.body.scrollHeight)
+  })
 
-    // Whenever the server emits 'user joined', log it in the chat body
-    socket.on('user joined', function (data) {
-      log(data.username + ' joined')
-      addParticipantsMessage(data)
-    });
-
-    // Whenever the server emits 'user left', log it in the chat body
-    socket.on('user left', function (data) {
-      log(data.username + ' left');
-      addParticipantsMessage(data);
-      removeChatTyping(data);
-    })
-
+  // // Whenever the server emits 'user joined', log it in the chat body
+  // socket.on('user joined', function (data) {
+  //   log(data.username + ' joined')
+  //   addParticipantsMessage(data)
+  // })
+  //
+  // // Whenever the server emits 'user left', log it in the chat body
+  // socket.on('user left', function (data) {
+  //   log(data.username + ' left')
+  //   addParticipantsMessage(data)
+  //   removeChatTyping(data)
+  // })
 })
