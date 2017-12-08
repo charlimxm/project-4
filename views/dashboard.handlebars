@@ -22,6 +22,7 @@
       {{#if user.location}}
 
       <div class="card-group">
+        {{#if matchedUser}}
         {{#each matchedUser as |mUser|}}
           <div class="col-md-4 mUser-3">
             <div class="card">
@@ -43,6 +44,13 @@
             </div>
           </div>
         {{/each}}
+
+        {{else}}
+        <br>
+        <br>
+        <h3>Sorry, there are no coders in this area with your preferred language. Please update your location to get matched users. </h2>
+
+        {{/if}}
       </div>
 
 
