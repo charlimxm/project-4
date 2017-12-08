@@ -24,6 +24,11 @@ https://pear-programming.herokuapp.com/
 
 
 ## Potential Improvements
+* Users can sign with Github
+* User can set their location using Google Maps, and return recommended people from their area. (Important Fix.)
+* Global chatrooms based on language
+* Immediate matches
+
 
 
 ## Built with

@@ -4,7 +4,7 @@
       <div class="card">
         <h6>Your Profile</h6><br>
         <div class="avatar">
-          <img class="card-img-top" src="{{mUser.imageUrl}}" alt="User Profile Image">
+          <img class="card-img-top" src="{{user.imageUrl}}" alt="User Profile Image">
         </div>
         <h7><strong>{{user.username}}</strong></h7><br>
         <p class="small"><strong>Overall Kyu:</strong> {{user.overallKyu}}</p>
@@ -12,7 +12,7 @@
         <p class="small"><strong>Preferred Language:</strong> {{user.preferredLanguage}}</p>
         <br>
         <p class="small">
-          Want to see more recommended pears? <br> Update your profile with your Preferred Location and Language!
+          You can always update your language and location!
         </p>
 
       </div>
@@ -47,9 +47,17 @@
 
 
     {{else}}
-
+    <br>
+    <br>
+    <div id="empty"
     <h6>Please specify your preferred location at your profile to view available users in your area.</h6>
-
+    <br>
+    <br>
+    <br>
+    <p class="small">
+      Want to see more recommended pears? <br> Update your profile with your Preferred Location and Language!
+    </p>
+  </div>
     {{/if}}
     </div>
 

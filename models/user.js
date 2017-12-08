@@ -11,6 +11,7 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
+    required: true,
     unique: true
   },
   password: {
@@ -18,10 +19,12 @@ const userSchema = new Schema({
     required: true
   },
   gender: {
-    type: String
+    type: String,
+    required: true
   },
   imageUrl: {
-    type: String
+    type: String,
+    required: true
   },
   honor: Number,
   leaderboardPosition: Number,

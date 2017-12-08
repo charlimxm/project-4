@@ -1,11 +1,10 @@
-<ul class="pages">
+<ul class="pages container">
   <p class="chat page">
     <div class="chatArea">
       <ul id="message">
         {{#each chat as |chat|}}
           <li>{{chat.user}}: {{chat.comment}}</li>
         {{/each}}
-
       </ul>
     </div>
     <form id="chat" action="">

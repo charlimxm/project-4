@@ -1,10 +1,12 @@
-#chat { background: #000; padding: 3px; position: relative; bottom: 0; width: 100%; }
-      #chat input { border: 0; padding: 10px; width: 92% }
-      #chat button { width: 8%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+#chat { background: #34495E; padding: 3px; position: relative; bottom: 0; width: 100%; }
+      #chat input { border: 0; padding: 10px; width: 90% }
+      #chat button { width: 10%; background: #26a69a; border: none; padding: 10px; }
       #message { list-style-type: none; margin: 0; padding: 0; }
       #message li { padding: 5px 10px; }
-      #message li:nth-child(odd) { background: #eee; }
-
+      #message li:nth-child(odd) { background: #faf7de; }
+.chatArea {
+  min-height: 500px;
+}
 body {
   display: flex;
   /*min-height: 100vh;*/
@@ -205,10 +207,15 @@ footer.page-footer {
 
 #delete {
   text-align: right;
+  color: white;
 }
 
 #delete .btn-primary:hover{
   background-color: #d91505;
+}
+#empty {
+  line-height: 40px;
+  text-align: center;
 }
 
 .mUser-3 {
