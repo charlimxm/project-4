@@ -17,15 +17,21 @@ router.get('/:id', (req, res) => {
 
   // retrieve history
   // find the pair based on :id
-  var userOneId = req.params.id
+  var roomId = req.params.id
   // return res.send(req.params.id)
 
   Pair.find({
     // "_id" : ObjectId("4ecc05e55dd98a436ddcc47c")
-    '_id': ObjectId(`${userOneId}`)
+    '_id': ObjectId(`${roomId}`)
     // $or: [
     //   { 'userOneId': ObjectId(req.params.id) },
     //   { 'userTwoId': ObjectId(req.params.id) }
+    // ]
+    // $and: [{'userOneId': userOneId || userTwoId},
+    //        {'userTwoId': userTwoId || userOneId}]
+    // $and : [
+    //     { $or : [ { 'userOneId': userOneId }, { 'userTwoId': userTwoId } ] },
+    //     { $or : [ { 'userOneId': userTwoId }, { 'userTwoId': userOneId } ] }
     // ]
   }).then((pair) => {
     // the history array
@@ -34,13 +40,6 @@ router.get('/:id', (req, res) => {
     // console.log("CHAT", chat)
     res.render('chat', {chat,
       pairId: req.params.id})
-  })
-
-    .then((pair) => {
-      // the history array
-      const chat = pair.chatMessages
-      res.render('chat', {chat,
-        pairId: req.params.id})
     })
 })
 
@@ -50,8 +49,12 @@ router.post('/', (req, res) => {
   // check the existence the pair
   Pair.find({
 
-    $and: [{'userOneId': userOneId || userTwoId},
-           {'userTwoId': userTwoId || userOneId}
+    // $and: [{'userOneId': userOneId || userTwoId},
+    //        {'userTwoId': userTwoId || userOneId}
+    // ]
+    $or : [
+        { $and : [ { 'userOneId': userOneId }, { 'userTwoId': userTwoId } ] },
+        { $and : [ { 'userOneId': userTwoId }, { 'userTwoId': userOneId } ] }
     ]
 
   })
@@ -72,8 +75,11 @@ router.post('/', (req, res) => {
             Pair.find({
 
               // "userOneId": userOneId || userTwoId, "userTwoId": userTwoId || userOneId
-              $and: [{'userOneId': userOneId || userTwoId},
-                     {'userTwoId': userTwoId || userOneId}
+              // $and: [{'userOneId': userOneId || userTwoId},
+              //        {'userTwoId': userTwoId || userOneId}
+              // ]
+              $and: [{'userOneId': userOneId},
+                     {'userTwoId': userTwoId}
               ]
 
             })
