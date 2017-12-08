@@ -21,6 +21,7 @@ https://pear-programming.herokuapp.com/
 <img src="public/assets/img/wireframes.png">
 
 ## ERD
+<img src="public/assets/img/erd.png" height="400">
 
 
 ## Potential Improvements
