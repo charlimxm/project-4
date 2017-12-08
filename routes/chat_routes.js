@@ -22,14 +22,7 @@ router.get('/:id', (req, res) => {
 
   Pair.find({
     // "_id" : ObjectId("4ecc05e55dd98a436ddcc47c")
-    // $and: [{
-    //   ""
-    // }]
      "_id": ObjectId(`${userOneId}`)
-
-     // $and: [{"userOneId": userOneId || userTwoId},
-     //        {"userTwoId": userTwoId || userOneId}
-     //      ]
     // $or: [
     //   { 'userOneId': ObjectId(req.params.id) },
     //   { 'userTwoId': ObjectId(req.params.id) }

@@ -1,14 +1,16 @@
 const User = require('../models/user')
 const Pair = require('../models/pair')
 const Chat = require('../models/chat')
-module.exports = io => {
 
-    io.on('connect', function(socket) {
-      socket.on("chat message", msg => {
+module.exports = io => {
+  io.on('connect', function (socket) {
+    socket.on('chat message', msg => {
         // Find the pair object which is acting like chatroom.
+
         // console.log("msg", msg)
         // console.log("msg.chatroom", msg.chatroom)
         Pair.findById(msg.chatroom)
+
           .then((pair) => {
             // new message
             const chatMessage = {
@@ -37,6 +39,6 @@ module.exports = io => {
               })
               .catch((err) => console.log(err))
           })
-      })
     })
+  })
 }

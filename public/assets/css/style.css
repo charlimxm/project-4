@@ -1,6 +1,6 @@
-#chat { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      #chat input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      #chat button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+#chat { background: #000; padding: 3px; position: relative; bottom: 0; width: 100%; }
+      #chat input { border: 0; padding: 10px; width: 92% }
+      #chat button { width: 8%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #message { list-style-type: none; margin: 0; padding: 0; }
       #message li { padding: 5px 10px; }
       #message li:nth-child(odd) { background: #eee; }
@@ -64,13 +64,20 @@ nav ul a, nav .brand-logo {
 }
 
 .footer-color {
-  background-color: #7F8C8D;
+  background-color: #34495E;
+}
+
+footer {
+  height: 200px;
 }
 
 footer.page-footer {
   margin: 0;
 }
 
+.copyright {
+  background-color: #516e8c;
+}
 .hero-div {
   background-color: white;
   text-align: center;
@@ -183,18 +190,23 @@ footer.page-footer {
   text-align: center;
   color: white;
 }
+
 #registerLabels label{
   font-size: 24px;
 }
+
 #registerLabels .btn-primary{
   background-color: #c2d658;
 }
+
 #profile{
   color: white;
 }
+
 #delete {
   text-align: right;
 }
+
 #delete .btn-primary:hover{
   background-color: #d91505;
 }

@@ -18,59 +18,64 @@
 
   <!-- Just an image -->
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="/"><img src="/assets/img/pear-outline-filled.png" width="40" height="40" class="d-inline-block align-center" />Pear</a>
+    <img src="/assets/img/pear-outline-filled.png" width="90" />
+    <a class="navbar-brand" href="/">Pear Programming</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav">
 
+        <a class="nav-item nav-link" href="/resources"><strong>Resources</strong></a>
+
         {{#if user}}
-          <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-          <a class="nav-item nav-link" href="/profile/{{user.username}}">{{user.username}}</a>
-          <a class="nav-item nav-link" href="/logout">Logout</a>
+
+          <a class="nav-item nav-link" href="/dashboard"><strong>Dashboard</strong></a>
+          <a class="nav-item nav-link" href="/profile/{{user.username}}"><strong>{{user.username}}</strong></a>
+          <a class="nav-item nav-link" href="/logout"><strong>Logout</strong></a>
 
         {{else}}
 
-          <a class="nav-item nav-link" href="/login">Login</a>
-          <a class="nav-item nav-link" href="/register">Register</a>
+          <a class="nav-item nav-link" href="/login"><strong>Login</strong></a>
+          <a class="nav-item nav-link" href="/register"><strong>Register</strong></a>
 
         {{/if}}
-
-        <a class="nav-item nav-link" href="/resources">Resources</a>
 
       </div>
     </div>
   </nav>
 
-
+  {{!-- ---------------------------------------------------------------- --}}
 
   {{{ body }}}
 
+  {{!-- ---------------------------------------------------------------- --}}
 
-
-
-  <footer class="footer-color navbar-dark sticky-bottom">
-
+  <footer class="footer-color navbar-light sticky-bottom">
     <div class="container">
       <div class="row">
         <div class="col xl7 l7 s12">
-          <h4 class="white-text">Pear Programming</h4>
-          <p class="grey-text text-lighten-4">By Shui, Charmaine, Hidayah, William</p>
+          <br>
+          <h4><a href="https://github.com/charlimxm/project-4"><img src="/assets/img/pear-outline-filled.png" width="70"> Pear Programming</a></h4><br>
+          <h7 class="grey-text text-lighten-4">By
+            <a href="https://github.com/sillyadventures">Shui,  </a>
+            <a href="https://github.com/charlimxm">Charmaine,  </a>
+            <a href="https://github.com/noobnur">Hidayah,  </a>
+            <a href="https://github.com/subutai1175">William  </a>
+          </h7>
+          <br>
+          <br>
         </div>
-        <div class="justify-content-end">
-          <h4 class="white-text">Links</h4>
+        {{!-- <div class="justify-content-end">
+          <br>
+          <h5 class="white-text">Links</h5><br>
           <ul class="nav">
-            <li><img src="/assets/img/github-logo.svg" width="50px"><a class="grey-text text-lighten-3" href="https://github.com/charlimxm/project-4">Github</a></li>
+            <li><a class="white-text text-lighten-3" href="/resources">Resource</a></li><br>
           </ul>
-        </div>
+        </div> --}}
       </div>
+      <p class="d-flex justify-content-center">© 2017 Can-Do-One Pte Ltd. All rights reserved. Use of this site constitutes acceptance of our Terms of Use and Privacy Policy</p>
     </div>
-
-  </footer>
-
-  {{!-- ---------------------------------------------------------------- --}}
-
   </footer>
 
   {{!-- ---------------------------------------------------------------- --}}
@@ -79,8 +84,8 @@
     UPLOADCARE_PUBLIC_KEY = "f2d9934e84f8b4f58c92"
   </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://ucarecdn.com/libs/widget/3.1.4/uploadcare.full.min.js" charset="utf-8"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/assets/js/flat-ui.js"></script>

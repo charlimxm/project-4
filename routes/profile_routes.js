@@ -4,15 +4,11 @@ const router = express.Router()
 
 var rp = require('request-promise')
 
-// router.get('/', (req, res) => {
-//   res.render('profile', req.user)
-// })
-
 router.get('/:username', (req, res) => {
   var person = req.params.username
   User.findOne({
-      'username': person
-    })
+    'username': person
+  })
     .then(person => {
       res.render('profile', {
         person
@@ -21,16 +17,15 @@ router.get('/:username', (req, res) => {
     .catch(err => console.log(err))
 })
 
-
 router.put('/:id', (req, res) => {
   var formData = req.body
   User.findByIdAndUpdate(req.params.id, {
-      email: formData.email,
-      about: formData.about,
-      codewith: formData.codewith,
-      location: formData.location,
-      preferredLanguage: formData.preferredLanguage
-    })
+    email: formData.email,
+    about: formData.about,
+    codewith: formData.codewith,
+    location: formData.location,
+    preferredLanguage: formData.preferredLanguage
+  })
     .then(() => res.redirect(`/profile/${req.body.slug}`))
     .catch(err => console.log(err))
 })
