@@ -25,8 +25,7 @@ const io = require('socket.io')(http)
 
 // require all model files
 const User = require('./models/user')
-const Chat = require('./models/chat')
-const Pair = require('./models/chat')
+const Pair = require('./models/pair')
 
 // require all my route files
 const register_routes = require('./routes/register_routes')

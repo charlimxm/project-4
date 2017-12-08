@@ -1,6 +1,5 @@
 const User = require('../models/user')
 const Pair = require('../models/pair')
-const Chat = require('../models/chat')
 
 module.exports = io => {
   io.on('connect', function (socket) {
